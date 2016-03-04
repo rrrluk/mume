@@ -1,0 +1,5 @@
+#alias gg={#($-42=\$0); #for (\@1=1; \@1<=(:?$-40); \@1++) {#send ("tell " + (\$-40:\@1) + " " + $grouptell_prefix + \$-42 + $grouptell_suffix)}}
+#alias gadd={#($-40=\$-40+" "+\$1); #print (attr "green" + "Name: " + attr "yellow" + \$1 + noattr + " added to GroupTell list.")}
+#alias grem={#if (*\$1) {#(@-40=0);#($-41=\$1);gremsub1;#if (\@-40!=0) {#print ("Ok. Member "+\$-41+" removed.");gremsub2;#($-40=\$-42)}; #else #print ("Member not found.")}}
+#alias greset={#($-40=""); #print ("GroupTell Memberslist cleared. No members now.")}
+#($grouptell_suffix = "   [GT]")

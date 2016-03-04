@@ -1,0 +1,112 @@
+i#savefile-version 6
+
+#("     PLAYER   PERSONALIZATION    ")
+#var $MUMECMD=~/mud/mume
+#($ACCOUNT = "kalev")
+
+#("    CHARACTER PERSONALIZATION    ")
+#($PLAYER = "miltar")
+#($skin = "skin")
+#($pack = "backpack")
+#($sable = "backpack")
+#($light = "ruby")
+#($mount = "minu")
+#($weapon1 = "broadsword")
+#($weapon1 = "orcrist")
+#($weapon1 = "sting")
+#($weapon2 = "bow")
+#($weapon3 = "bow")
+#($target = "*orc*")
+#($trtarget = "warg")
+
+#("    INCLUDES     ")
+#exe <include/generic
+#exe <include/targeting_puke
+#exe <include/spells
+
+#exe <include/kalev
+
+#alias sa=emo says, '$0'
+
+//#alias ds={get cup bag;drink cup;put cup bag}
+#alias gpw={gp ${weapon1};gp ${weapon2}}
+
+#bind F2=cast ${effort} 'burn' ${target}
+#bind F2=h
+#bind F3=cast ${effort} 'dispel evil' ${target}
+#bind F3=di
+#bind F4=cast ${effort} 'blind' ${target}
+#bind F4=bl
+#bind F7={cd;xz}
+#bind F8={cd;xx}
+#bind F12=sh
+#bind PGDOWN=x
+#bind ctrlPGDOWN=xAA
+#bind altPGDOWN=xBB
+#bind ctrlaltPGDOWN=xAABB
+#bind PGUP=aa
+#bind ctrlPGUP=aaAA
+#bind altPGUP=aaBB
+#bind ctrlaltPGUP=aaAABB
+#bind HOME=csn
+#bind END=csq
+
+#alias aa=order followers assist
+#alias aaAA=order AA assist
+#alias aaBB=order BB assist
+#alias aaAABB={order AA assist;order BB assist}
+#alias x=order followers hit ${target}
+#alias xAA=order AA hit ${target}
+#alias xBB=order BB hit ${target}
+#alias xAABB={order AA hit ${target};order BB hit ${target}}
+#alias r=order followers rescue miltar
+#alias ff=order followers flee
+
+#alias j=#if (*$(1)) jj $1.${target}; #else jj ${target}
+#alias jj=cast ${effort} 'lightning bolt' $0
+#alias h=#if (*$(1)) hh $1.${target}; #else hh ${target}
+#alias hh=cast ${effort} 'burning hands' $0
+#alias h2=#if (*$(1)) hh $1.${target2}; #else hh ${target2}
+#alias b=#if (*$(1)) bb $1.${target}; #else bb ${target}
+#alias bb=cast ${effort} 'fireball' $0
+#alias y=#if (*$(1)) yy $1.${target}; #else yy ${target}
+#alias yy=cast ${effort} 'colour spray' $0
+
+#alias 1=bl 1
+#alias 2=bl 2
+#alias 3=bl 3
+#alias 4=bl 4
+#alias 5=bl 5
+#alias 6=bl 6
+#alias 7=bl 7
+#alias 8=bl 8
+#alias 9=bl 9
+#alias 10=bl 10
+
+#bind alt1 ^[1=bl 1
+#bind alt2 ^[2=bl 2
+#bind alt3 ^[3=bl 3
+#bind alt4 ^[4=bl 4
+#bind alt5 ^[5=bl 5
+#bind alt6 ^[6=bl 6
+#bind alt7 ^[7=bl 7
+#bind alt8 ^[8=bl 8
+#bind alt9 ^[9=bl 9
+#bind alt0 ^[0=bl 10
+
+#alias di=#if (*$(1)) dispel $0; #else dispel ${target}
+#alias dispel=cast ${effort} 'dispel evil' $0
+
+#alias cll={g ebony all;recite ebony ${target}}
+
+#alias dk={#speedwalk ssswnnswnnswnn}
+#alias circ={gp circlet;remove coif;remove helm;wear circlet;pp coif;pp helm}
+#alias helm={gp helm;remove circlet;wear helm;pp circlet}
+#alias coif={gp coif;remove circlet;wear coif;pp circlet}
+
+#alias aa=order followers assist
+#alias x=order followers hit ${target}
+#alias r=order followers rescue miltar
+#alias ff=order followers flee
+
+

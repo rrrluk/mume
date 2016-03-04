@@ -1,0 +1,154 @@
+
+#("      GENERAL       ")
+
+#alias ws={wake;stand}
+#alias ggc=#if (*$(1)) get coins $1.corpse; #else get coins corpse
+#alias stsat=stat
+#alias dsk=drink skin
+#alias psk=pour water skin
+#alias dw=drink water
+#alias gp=get $1 backpack
+#alias pp=put $1 backpack
+#alias lib=look in backpack
+#alias liq=look in quiver
+#alias lk=light lantern
+#alias snl=snuff lantern
+#alias em=emote smirks: $0
+#alias wl=weather local
+#alias langon-bdg=say beardornanordorgonnu
+#alias to-foci=#speedwalk sunwwuwwsssswwwwsssssueuu
+#alias from-foci={#speedwalk ddwdnnnnneeeennnneedeesdn;bf}
+#alias obd=of bash dis $1
+#alias fyr-libram=#speedwalk sweenneesnwenn
+#alias for-libram=#speedwalk snnwennwnnnwen
+#alias jir-libram=#speedwalk wenwennwenewen
+#alias langon-libram=#speedwalk senwennwsnewen
+#alias mixsvarten={get fur sack;get tail sack;get tarragon sack;get vial sack;put fur kit;put tail kit;put tarragon kit;put vial kit;mix kit}
+#alias bhs=cast 'burning hands' stonedoor
+#alias ust={use stone $0}
+#alias cup={gp cup;quaff cup}
+#alias glo={es;fb gloom;es
+#alias mauve={get sack corpse;get all.mauve sack;pp all.mauve;drop sack}
+#alias ivor={get ivory all;recite ivory}
+#alias storear=cast normal 'store' armour
+
+#("   ALERTNESS, MOOD, SPELL SPEED   ")
+
+
+#alias an=change alert normal
+#alias ap=change alert paranoid
+
+#alias mw=change mood wimpy
+#alias ma=change mood aggr
+#alias mn=change mood normal
+#alias mp=change mood prudent
+#alias mb=change mood brave
+#alias cmw=change mood wimpy
+#alias cma=change mood aggressive
+#alias mood=change mood $0
+#alias cq=change spell quickly
+#alias cf=change spell fast
+#alias cn=change spell normal
+#alias cc=change spell careful
+#alias ct=change spell thorough
+
+
+#(" SUBS ")
+#action >+arm ^You feel less protected.={#print  - [ ! A R M O U R    D O W N ! ] -}
+#action >+cirdan Círdan=underline 
+
+
+
+#("      SPELLS		")
+#alias sanc={#if (*$(2)) #send ("cast $2 'sanctuary' $1"));#else c n 'sanctuary' $1}}'
+#alias cfoo=cast 'create food'
+#alias cwat=cast 'create water' $1
+#alias ef=eat food
+#alias qob=cast quick 'breath of briskness'
+#alias qar=cast quick 'armour'
+#alias storet={cast normal 'store' teleport}
+#alias storef={cast normal 'store' fireball}
+#alias storee={cast normal 'store' earthquake}
+#alias cb={cast normal 'cure blindness' $1}
+#alias storec={cast normal 'store' charm}
+#alias storea={cast normal 'store' armour}
+#alias stores={cast normal 'store' colour}
+#alias ar=cast normal 'armour'
+#alias shi=cast normal 'shield'
+#alias cst=cast normal 'strength' $1
+#alias bob=cast normal 'breath of briskness'
+#alias shr=cast normal 'shroud' $1
+#alias scr=cast normal 'scry' $1
+#alias prt=cast normal 'portal' up $1 
+#alias cfoo=cast normal 'create food'
+#alias cwat=cast  normal 'create water' $1
+#alias rd=cast normal 'raise dead' $1
+#alias food={cfoo;eat mushroom}
+#alias cri=cast normal 'cure critic' $1
+#alias cs=cast normal 'cure serious' $1
+#alias sm=cast 'smother' $1
+#alias sli=cast 'sleep' $1
+#alias si=cast 'sleep' $1
+#alias storesli=cast n 'store' sleep
+
+
+#(        "ROCK"         )
+#alias ren={get rock all;_rock exit n}
+#alias res={get rock all;_rock exit s}
+#alias ree={get rock all;_rock exit e}
+#alias rew={get rock all;_rock exit w}
+#alias red={get rock all;_rock exit d}
+#alias reu={get rock all;_rock exit u}
+
+
+
+#("      BATTLE		")
+
+#alias lt=label $0 target
+#alias tat=tar target
+#alias kt=hit ${target}
+#bind numpad0 ^[Op=flee
+#bind numpad1 ^[Oq=hittar
+#alias kk=kick $1
+#alias ba=bash $1
+#alias ss=#if (%%$(1)==$(1)) shoot $1.${target};#else #if (*$(1)) shoot $0; #else shoot ${target}
+#alias de=cast 'dispel evil' $1
+#alias b=backstab $1
+#alias bt={backstab ${target}}
+#alias ore=of rescue jir
+#alias ht={hit ${tr}}
+#alias obb={rem gloves;gp gloves;wear gloves;pp gloves;rem cloak;pp cloak;gp grisly;wear grisly}
+#alias for={rem grisly;pp grisly;gp forest;wear forest;rem gloves;gp gloves;wear gloves;pp gloves}
+#alias coi={rem crown;pp crown;gp coif;wear coif}
+#alias cro={rem coif;pp coif;gp crown;wear crown}
+#alias ot={of kill ${tr}}
+#alias po={get pouch all;drop pouch}
+#alias can={get candle all;wield candle;use candle}
+#alias bes={_bash exit s}
+#alias ben={_bash exit n}
+#alias bee={_bash exit e}
+#alias bew={_bash exit w}
+#alias beu={_bash exit u}
+#alias bed={_bash exit d}
+
+#("	EQ	")
+
+#alias dsw=draw sword
+#alias da=draw axe
+#alias dh=draw hammer
+#alias dsp=draw spear
+#alias db=draw bow
+#alias bb={rem boots;gp boots;wear boots;pp boots}
+#alias dd=draw dirk
+
+
+#("      REPORTING    ")
+#alias report=info %.reports: %z/%Z Hits %e/%E Mana and %j/%J Moves.
+#alias repog=info %.groupreports: %z/%Z Hits %e/%E Mana and %j/%J Moves.
+#alias rep=report
+#action >+repp ^reports:=emote $0
+#action %+repg ^groupreports: (.*)=gt has $2
+#alias tnl=info %.needs: %X xps and %T tps to level.
+#action >+tnl ^needs:=emote $0
+#alias stat2=inf OB: %O, DB: %D, PB: %k, Armour: %A%%. Wimpy: %y. Mood: %Y.%.Needed: %X xp, %T tp. Gold: %g. Lvl: %l. PK: %K.%.Total xp: %x. Total tp: %t.%.%f
+

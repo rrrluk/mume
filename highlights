@@ -1,0 +1,244 @@
+#("      BLOCKING/BREAKING HIGHLIGHTS       ")
+
+#action %+broken ^The (.+) (is|are) filled with a bright light\\.=#print (attr "bold"+"The -[ "+noattr+attr "bold green"+"$2"+noattr+attr "bold"+" ]- has been "+noattr+attr "bold yellow"+"BROKEN!"+noattr)
+#action >+blockon ^The exit $1 seems to blur for a while.={#print;#print (attr "bold"+"******** EXIT -[ "+attr "green"+"$1"+noattr+noattr+attr "bold"+" ]- BLOCKED ********"+noattr)}
+#action >+exitpops ^The exit $1 blurs for a while.={#print;#print (attr "bold"+"********** EXIT -[ "+attr "green"+"$1"+noattr+attr "bold"+" ]- UN-BLOCKED ********"+noattr)}
+#action %+blockoffD ^The (.+) seems? to blur for a while\\.={#print;#print (attr "bold"+"************* THE -[ "+attr "green"+"$2"+noattr+attr "bold"+" ]- UN-BLOCKED *************"+noattr)}
+#action %+blockoff ^The (.+) blurs? for a while\\.={#print;#print (attr "bold"+"************* THE -[ "+attr "green"+"$2"+noattr+attr "bold"+" ]- UN-BLOCKED *************"+noattr)}
+#action >+exitblocked ^That's impossible, I'm afraid.={#print;#print (attr "yellow"+"******** DOOR IS BLOCKED: USE ROCK ********"+noattr)}
+
+#("       FIGHTING/MOVEMENT/TRACKING/MISC SUBSTITUTIONS        ")
+
+#action >-startcast ^&1 begins some strange incantations...&2=#print $1 BEGINS SOME STRANGE INCANTATIONS...$2
+#action >+los ^Alas! There was no clear line of sight to $1!=#print (attr "bold yellow"+"-=-=-=-=-=- NO LINE OF SIGHT -=-=-=-=- NO LINE OF SIGHT -=-=-=-=-"+noattr)
+
+#action >+incap6 &1 is lying here, stunned.=#print ("$1 is lying here, "+attr "bold red"+"S.T.U.N.N.E.D"+noattr+".")
+#action >+incap5 &1 is lying here, mortally wounded.=#print ("$1 is lying here, "+attr "bold red"+"M.O.R.T.A.L.L.Y W.O.U.N.D.E.D"+noattr+".")
+#action >+incap4 &1 is lying here, incapacitated.=#print ("$1 is lying here, "+attr "bold red"+"I.N.C.A.P.A.C.I.T.A.T.E.D"+noattr+".")
+#action >+incap3 &1 is stunned and will probably die soon.=#print ("$1 is "+attr "bold red"+"S.T.U.N.N.E.D"+noattr+" and will probably die soon.")
+#action >+incap2 &1 is incapacitated and will slowly die, if not aided.&2=#print ("$1 is "+attr "bold red"+"I.N.C.A.P.A.C.I.T.A.T.E.D"+noattr+" and will slowly die, if not aided.$2")
+#action >+incap1 &1 is mortally wounded and will die soon if not aided.&2=#print ("$1 is "+attr "bold red"+"M.O.R.T.A.L.L.Y W.O.U.N.D.E.D"+noattr+" and will die soon if not aided.$2")
+#action >+resting1 ^&1 is resting here&2=#print ("$1 is "+attr "bold yellow"+"RESTING"+noattr+" here$2")
+#action >+resting2 ^&1 is here, resting &2=#print ("$1 is here, "+attr "bold yellow"+"RESTING"+noattr+" $2")
+#action >+sitting ^&1 is sitting here&2=#print ("$1 is "+attr "bold yellow"+"SITTING"+noattr+" here$2")
+#action >+sleeping ^&1 is sleeping here&2=#print ("$1 is "+attr "bold yellow"+"SLEEPING"+noattr+" here$2")
+
+#action >+come_u ^&1 coming from above&2=#print ("$1  c o m i n g  from "+attr "bold"+"UP"+noattr+"$2")
+#action >+come_w ^&1 coming from the west&2=#print ("$1  c o m i n g  from "+attr "bold"+"WEST"+noattr+"$2")
+#action >+come_s ^&1 coming from the east&2=#print ("$1  c o m i n g  from "+attr "bold"+"EAST"+noattr+"$2")
+#action >+come_n ^&1 coming from the north&2=#print ("$1  c o m i n g  from "+attr "bold"+"NORTH"+noattr+"$2")
+#action >+come_d ^&1 coming from below&2=#print ("$1  c o m i n g  from "+attr "bold"+"DOWN"+noattr+"$2")
+#action >+come_e ^&1 coming from the south&2=#print ("$1  c o m i n g  from "+attr "bold"+"SOUTH"+noattr+"$2")
+#action >+arru ^&1 has arrived from above&2=#print ("$1 has ARRIVED from "+attr "bold"+"UP"+noattr+"$2")
+#action >+arrw ^&1 has arrived from the west&2=#print ("$1 has ARRIVED from "+attr "bold"+"WEST"+noattr+"$2")
+#action >+arre ^&1 has arrived from the east&2=#print ("$1 has ARRIVED from "+attr "bold"+"EAST"+noattr+"$2")
+#action >+arrn ^&1 has arrived from the north&2=#print ("$1 has ARRIVED from "+attr "bold"+"NORTH"+noattr+"$2")
+#action >+arrd ^&1 has arrived from below&2=#print ("$1 has ARRIVED from "+attr "bold"+"DOWN"+noattr+"$2")
+#action >+arrs ^&1 has arrived from the south&2=#print ("$1 has ARRIVED from "+attr "bold"+"SOUTH"+noattr+"$2")
+#action >+lead_u ^&1 leading UP&2=#print ("$1 leading -- "+attr "bold"+"UP"+noattr+" --$2")
+#action >+lead_w ^&1 leading west&2=#print ("$1 leading << "+attr "bold"+"WEST"+noattr+" <<$2")
+#action >+lead_s ^&1 leading east&2=#print ("$1 leading >> "+attr "bold"+"EAST"+noattr+" >>$2")
+#action >+lead_n ^&1 leading north&2=#print ("$1 leading ^^ "+attr "bold"+"NORTH"+noattr+" ^^$2")
+#action >+lead_d ^&1 leading down&2=#print ("$1 leading __ "+attr "bold"+"DOWN"+noattr+" __$2")
+#action >+lead_e ^&1 leading south&2=#print ("$1 leading vv "+attr "bold"+"SOUTH"+noattr+" vv$2")
+#action >+gou ^&1 leaves up&2=#print ("$1 leaves -- "+attr "bold"+"UP"+noattr+" --$2")
+#action >+gow ^&1 leaves west&2=#print ("$1 leaves << "+attr "bold"+"WEST"+noattr+" <<$2")
+#action >+goe ^&1 leaves east&2=#print ("$1 leaves >> "+attr "bold"+"EAST"+noattr+" >>$2")
+#action >+gon ^&1 leaves north&2=#print ("$1 leaves ^^ "+attr "bold"+"NORTH"+noattr+" ^^$2")
+#action >+god ^&1 leaves down&2=#print ("$1 leaves __ "+attr "bold"+"DOWN"+noattr+" __$2")
+#action >+gos ^&1 leaves south&2=#print ("$1 leaves vv "+attr "bold"+"SOUTH"+noattr+" vv$2")
+
+#action >+fleeu ^You flee up.=#print ("You FLEE from "+attr "bold"+"DOWN"+noattr+".")
+#action >+fleew ^You flee west.=#print ("You FLEE from "+attr "bold"+"EAST"+noattr+".")
+#action >+fleee ^You flee east.=#print ("You FLEE from "+attr "bold"+"WEST"+noattr+".")
+#action >+fleen ^You flee north.=#print ("You FLEE from "+attr "bold"+"SOUTH"+noattr+".")
+#action >+fleed ^You flee down.=#print ("You FLEE from "+attr "bold"+"UP"+noattr+".")
+#action >+flees ^You flee south.=#print ("You FLEE from "+attr "bold"+"NORTH"+noattr+".")
+
+#action >+fleeu ^You flee up.=#print ("You flee "+attr "bold"+"UP"+noattr+".")
+#action >+fleew ^You flee west.=#print ("You flee "+attr "bold"+"WEST"+noattr+".")
+#action >+fleee ^You flee east.=#print ("You flee "+attr "bold"+"EAST"+noattr+".")
+#action >+fleen ^You flee north.=#print ("You flee "+attr "bold"+"NORTH"+noattr+".")
+#action >+fleed ^You flee down.=#print ("You flee "+attr "bold"+"DOWN"+noattr+".")
+#action >+flees ^You flee south.=#print ("You flee "+attr "bold"+"SOUTH"+noattr+".")
+
+#action %+d1 ^The (.+) (seem|seems) to be closed.={#print ("The -[ "+attr "bold green"+"$2"+noattr+" ]- $3 to be "+attr "bold"+"CLOSED"+noattr+".");#map -1}
+#action >+d2 ^The $1 closes quietly.=#print ("The -[ "+attr "bold green"+"$1"+noattr+" ]- "+attr "bold"+"CLOSES"+noattr+" QUIETLY.")
+#action >+d3 ^The $1 close quietly.=#print ("The -[ "+attr "bold green"+"$1"+noattr+" ]- "+attr "bold"+"CLOSE"+noattr+" QUIETLY.")
+#action >+d4 ^The $1 opens quietly.=#print ("The -[ "+attr "bold green"+"$1"+noattr+" ]- "+attr "bold"+"OPENS"+noattr+" QUIETLY.")
+#action >+d5 ^The $1 open quietly.=#print ("The -[ "+attr "bold green"+"$1"+noattr+" ]- "+attr "bold"+"OPEN"+noattr+" QUIETLY.")
+#action %+d6 ^The (.+) (is|are) closed\\.={#print ("The -[ "+attr "bold green"+"$2"+noattr+" ]- $3 "+attr "bold"+"CLOSED"+noattr+".");sd $2}
+#action %+d7 ^The (.+) (is|are) open\\.={#print ("The -[ "+attr "bold green"+"$2"+noattr+" ]- $3 "+attr "bold"+"OPEN"+noattr+".");sd $2}
+#action %+d8 ^The (.+) (is|are) opened from the other side\\.=#print ("The -[ "+attr "bold green"+"$2"+noattr+" ]- $3 "+attr "bold"+"OPENED"+noattr+" from the OTHER SIDE.")
+#action >+d9 ^&1 closes the $2.=#print ("$1 "+attr "bold"+"CLOSES"+noattr+" the -[ "+attr "bold green"+"$2"+noattr+" ]-.")
+#action >+d10 ^&1 closes the $2 &3=#print ("$1 "+attr "bold"+"CLOSES"+noattr+" the -[ "+attr "bold green"+"$2"+noattr+" ]- $3")
+#action >+d11 ^&1 opens the &2.=#print ("$1 "+attr "bold"+"OPENS"+noattr+" the -[ "+attr "bold green"+"$2"+noattr+" ]-.")
+#action >+d12 ^&1 locks the &2.=#print ("$1 "+attr "bold red"+"LOCKS"+noattr+" the -[ "+attr "bold green"+"$2"+noattr+" ]-.")
+#action >+d13 ^&1 unlocks the &2.=#print ("$1 "+attr "bold red"+"UNLOCKS"+noattr+" the -[ "+attr "bold green"+"$2"+noattr+" ]-.")
+#action >+d14 ^You skillfully discover a hidden $1.={#print ("You skillfully discover a hidden -[ "+attr "bold green"+"$1"+noattr+" ].");sd $1}
+#action >+d15 ^You skillfully discover hidden $1.={#print ("You skillfully discover hidden -[ "+attr "bold green"+"$1"+noattr+" ].");sd $1}
+
+
+#action %+pick_shut1 ^(Using your lockpicks, you|You begin to) try to enable the lock\.\.\.$={#print ($(2) + " try to "+attr "bold red"+"PICK CLOSE"+noattr+" the lock...")}
+#action %+pick_open1 ^(Using your lockpicks, you|You begin to) try to pick the lock\.\.\.$={#print ($(2) + " try to "+attr "bold"+"PICK OPEN"+noattr+" the lock...")}
+
+#action %+pick_shut2 ^(.*) tries to enable the (.+)'s lock\.\.\.$={#print ($(2)+" tries to "+attr "bold red"+"PICK CLOSE"+noattr+" the -[ "+attr "bold green"+$(3)+noattr+" ]-'s lock...")}
+#action %+pick_open2 ^(.*) tries to pick the (.+)'s lock\.\.\.$={#print ($(2)+" tries to "+attr "bold"+"PICK OPEN"+noattr+" the -[ "+attr "bold green"+$(3)+noattr+" ]-'s lock...")}
+
+#action %-hurl ^The Balrog([^;]*) entangles ([^;]*) in his whip and hurls (him|her) out of the room!={#print ("The Balrog entangles " +attr "bold"+"$3"+noattr+ " in his whip and "+attr "bold yellow"+"HURLS"+noattr+" $4 out of the room!");#in yellhere (500) yell here}
+
+
+#action >+ishatter ^&9mYou $1 &2 and shatter it.&3=#print (attr "cyan"+"You $1 $2 and "+attr "bold"+"SHATTER"+noattr+attr "cyan"+" it."+noattr)
+
+
+#action >+bash1 ^&9*&1*&8 sends &2 sprawling with a powerful bash.=#print (attr "bold"+"*$1*"+noattr+" sends $2 "+attr "bold yellow"+"SPRAWLING with a powerful BASH."+noattr)
+#action >+bash2 ^&1 sends &9*&2*&8 sprawling with a powerful bash.=#print (attr "yellow"+"$1 has "+attr "bold"+"BASHED"+noattr+attr "yellow"+" [ "+attr "bold cyan"+"*$2*"+noattr+attr "yellow"+" ] !!!!"+noattr)
+
+#action >+bash3 ^&9mYou dodge a bash from &1 who loses $2 balance and falls.&3=#print (attr "red"+"You -( "+attr "bold"+"D O D G E  A  B A S H"+noattr+attr "red"+" )- from $1 who loses $2 balance and falls."+noattr)
+#action >+bash4 ^&9m&1 sends you sprawling with a powerful bash.&2=#print (attr "bold yellow"+"ACK! "+noattr+attr "red"+"$1 has -( "+attr "bold"+"B A S H E D  Y O U"+noattr+attr "red"+" )- !!!"+noattr)
+#action >-bash5 ^&1 sends &2 sprawling with a powerful bash.=#print (attr "green"+++ $1 has -( "+attr "bold"+"B A S H E D"+noattr+attr "green"+" )- $2 +++"+noattr)
+#action >+bash6 ^&9mYour bash at &1 sends $2 sprawling.&3=#print (attr "bold green"+"YAY! "+noattr+attr "cyan"+"You have [ "+attr "bold"+"B A S H E D"+noattr+attr "cyan"+" ] "+"$1"+attr "cyan"+" !!!"+noattr)
+#action >+bash7 ^&9mAs &1 avoids your bash, you topple over and fall to the ground.&2=#print (attr "bold yellow"+"BAH! "+noattr+attr "cyan"+"$1"+noattr+attr "cyan"+" D O D G E S your bash !!!"+noattr)
+
+
+#action >+approach ^&9m&1 quickly approaches, trying to $2 you.&3=#print (attr "red"+"$1 quickly APPROACHES you, trying to $2 you."+noattr)
+#action >+failes ^&9m&1 fails to $2 you.&3=#print (attr "red"+"$1 -( "+attr "bold"+"F A I L S"+noattr+attr "red"+" )- to $2 you."+noattr)
+#action >+parry1 ^&9m&1 tries to $2 you, but your parry is successful.&3=#print (attr "red"+"$1 tries to $2 you, but you -( "+attr "bold"+"P A R R Y"+noattr+attr "red"+" )- it."+noattr)
+#action >+dodge1 ^&9mYou swiftly dodge &1 attempt to $2 you.&3=#print (attr "red"+"You swiftly -( "+attr "bold"+"D O D G E"+noattr+attr "red"+" )- $1 attempt to $2 you."+noattr)
+
+#action >+melee ^Alas! You failed to reach $1 through the melee.=#print (attr "bold yellow"+"-=-=-=-=-=- MELEEE -=-=-=-=-=- MELEEE -=-=-=-=-=-"+noattr)
+
+#action >+casting1 ^&1 is standing here trying to concentrate.=#print ("$1 is standing here "+attr "red"+"CASTING"+noattr+".")
+#action >+casting2 ^&1 is here trying to concentrate, riding &2.=#print ("$1 is here "+attr "red"+"CASTING"+noattr+", riding $2.")
+#action >+casting3 ^&1 begins some strange incantations...=#print ("$1 starts "+attr "red"+"CASTING"+noattr+"...")
+
+#action >+nomv3 ^You failed swimming there.={#print (attr "bold"+"You failed swimming there."+noattr);#map -1}
+#action >+nomv2 ^You can't go into deep water!={#print (attr "bold"+"You can't go into deep water!"+noattr);#map -1}
+#action >+nomv1 ^Alas, you cannot go that way...={#print;#map -1}
+
+#action >+roots ^You can't seem to escape the roots!={#print (attr "bold"+"You can't seem to escape the roots!"+noattr)}
+#action >+winds ^A swift gust loosens your garbs scattering some of your belongings!={#print (attr "bold"+"A swift gust loosens your garbs scattering some of your belongings!"+noattr)}
+#action %+hurl ^The Balrog([^;]*) entangles ([^;]*) in his whip and hurls (him|her) out of the room!={#print ("The Balrog entangles " +attr "bold"+"$3"+noattr+ " in his whip and "+attr "bold yellow"+"HURLS"+noattr+" $4 out of the room!");#in yellhere (500) yell here}
+
+#("       MISC HIGHLIGHTS           ")
+#mark (plap)=cyan
+#mark \(down\)=bold yellow
+#mark \(east\)=bold yellow
+#mark \(linkless\)=bold yellow
+#mark \(north\)=bold yellow
+#mark \(south\)=bold yellow
+#mark \(up\)=bold yellow
+#mark \(west\)=bold yellow
+#mark \=down\==bold green
+#mark \=east\==bold green
+#mark \=north\==bold green
+#mark \=south\==bold green
+#mark \=up\==bold green
+#mark \=west\==bold green
+#mark Alert: paranoid=bold red
+#mark Exits:=bold 
+#mark :Wounded>=bold cyan
+#mark :Bad>=bold magenta
+#mark :Awful>=bold red
+#mark :Hurt>=cyan
+#mark :Dying>=bold yellow
+#mark HP:Awful=bold red
+#mark HP:Bad=red
+#mark HP:Dying=bold red
+#mark HP:Wounded=bold yellow
+#mark Mood: berserk.=bold red
+#mark That's impossible, I'm afraid.=bold yellow
+#mark The detect invisible wears off.=bold green
+#mark The light decreases.=bold green
+#mark Your vision is troubled and you feel disoriented.=bold yellow
+#mark You slowly regain your bearings as your head clears.=bold green
+#mark Tired=bold 
+#mark Slow=bold red
+#mark Weak=bold red
+#mark Fainting=bold red
+#mark Exhausted=bold red
+#mark You gain a level!=bold red
+#mark You can only gain one level at a time... Reduced experience.=bold red
+#mark [down]=yellow
+#mark [east]=yellow
+#mark [north]=yellow
+#mark [south]=yellow
+#mark [up]=yellow
+#mark [west]=yellow
+#mark blackcurrant=bold cyan
+#mark closes=green
+#mark clover=bold cyan
+#mark fighting YOU=bold red
+#mark flour=bold cyan
+#mark forget-me-nots=bold cyan
+#mark glows blue=bold blue
+#mark glows red=red
+#mark glows yellow=yellow
+#mark growing=green
+#mark grows=green
+#mark hemlock=bold cyan
+#mark incapacitated=bold
+#mark is dead! R.I.P.=bold 
+#mark linkless=bold yellow
+#mark mauve petals=bold cyan
+#mark mushroom=bold cyan
+#mark mushrooms=bold cyan
+#mark preserved blood=bold cyan
+#mark recovered her senses.=on cyan
+#mark recovered his senses.=on cyan
+#mark recovered its senses.=on cyan
+#mark red rose=bold cyan
+#mark seems to blur for a while.=bold 
+#mark sprawling=bold
+#mark seems to be blinded!=red
+#mark surrounded by a white aura.=bold 
+#mark white rose=bold cyan
+#mark Reconnecting=red
+#mark A grinding noise is heard from the ceiling.=bold green
+#mark Small bits of rock fall from the ceiling and the passage shifts.=bold green
+#mark A low moan arises from the ground.=bold green
+#mark \(glowing\)=bold cyan
+#mark EXPIRED=red
+#mark a fine pair of soft leather gloves=green
+#mark Ok.=green
+
+#("            GOTTA WORK ON THAT         ")
+#mark *click*=red
+#mark thirsty=yellow
+#mark hungry=yellow
+#mark is keeping an eye on you.=bold green
+#mark stops keeping an eye on you.=bold green
+
+
+#(" MINU ")
+
+#mark a gleaming belt=underline 
+#mark a mighty dwarven axe=underline
+#mark a bejewelled shield=underline
+#mark a red ruby=underline
+#mark a fine grey cloak=underline
+#mark a broad silver belt=underline
+#mark :Burning=green
+#mark :Hot=cyan
+#mark :Cold=cyan
+#mark :Fine=green
+#mark :Tired=cyan
+#mark :Warm=yellow
+#mark :Wounded=cyan
+#mark :Healthy=green
+#mark :Hurt=cyan
+#mark :Bad=red
+#mark :Dying=red
+
+#mark :Awful=on red
+#mark (x)=red
+#mark (y)=red
+#mark (z)=red
+
+
+#mark a shining breastplate=underline
+#mark a shining pair of vambraces=underline
+#mark a finely woven cloak=underline
+#mark a shining pair of greaves=underline
+#
+#mark a pair of snowshoes=red

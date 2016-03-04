@@ -1,0 +1,8 @@
+#("	DOORS	")
+#bind alt-num2 ^[^[Or=_open exit s
+#bind alt-num3 ^[^[Os=_open exit d
+#bind alt-num4 ^[^[Ot=_open exit w
+#bind alt-num6 ^[^[Ov=_open exit e
+#bind alt-num8 ^[^[Ox=_open exit n
+#bind alt-num9 ^[^[Oy=_open exit u
+

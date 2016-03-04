@@ -1,0 +1,38 @@
+#action >+dispelevil &1utters the words 'eugszr zzur'={#print ("$1utters the words 'DISPEL EVIL'")}
+#action >+heal &1utters the word 'pzar'={#print ("$1utters the word 'HEAL'")}
+#action >+createfood &1utters the words 'qfzahz yaae'={#print ("$1utters the words 'CREATE FOOD'")}
+#action >+createwater &1utters the words 'qfzahz xahzf'={#print ("$1utters the words 'CREATE WATER'")}
+#action >+blindness &1utters the word 'noselacri'={#print ("$1utters the word 'BLINDNESS'")}
+#action >+sanctuary &1utters the word 'gaiqhjabral'={#print ("$1utters the word 'SANCTUARY'")}
+#action >+bob &1utters the words 'bfzahp ay bfugtizgg'={#print ("$1utters the words 'BREATH OF BRISKNESS'")}
+#action >+strength &1utters the word 'ghcandusiohp'={#print ("$1utters the word 'STRENGTH'")}
+#action >+senselife &1utters the words 'gunsogz ruyz'={#print ("$1utters the words 'SENSE LIFE'")}
+#action >+protectionfromevil &1utters the words 'sfahzqhuai yfaw zzur'={#print ("$1utters the words 'PROTECTION FROM EVIL'")}
+#action >+detectevil &1utters the words 'oculoinfra zzur'={#print ("$1utters the words 'DETECT EVIL'")}
+#action >+harm &1utters the word 'pabraw'={#print ("$1utters the word 'HARM'")}
+#action >+cureserious &1utters the words 'judicandus gzfuajg'={#print ("$1utters the words 'CURE SERIOUS'")}
+#action >+curecritical &1utters the words 'judicandus qfuhuq'={#print ("$1utters the words 'CURE CRITICAL'")}
+#action >+curelight &1utters the words 'judicandus dies'={#print ("$1utters the words 'CURE LIGHT'")}
+
+
+#action >+sleep &1utters the word 'grzzs'={#print ("$1utters the word 'SLEEP'")}
+#action >+fireball &1utters the word 'yufzbarr'={#print ("$1utters the word 'FIREBALL'")}
+#action >+colourspray &1utters the words 'qahijf gsfal'={#print ("$1utters the words 'COLOUR SPRAY'")}
+#action >+blockdoor &1utters the words 'braqt eaaf'={#print ("$1utters the words 'BLOCK DOOR'")}
+#action >+store &1utters the word 'ghafz'={#print ("$1utters the word 'STORE'")}
+#action >+armour &1utters the word 'abrawajf'={#print ("$1utters the word 'ARMOUR'")}
+#action >+shield &1utters the word 'gpuzre'={#print ("$1utters the word 'SHIELD'")}
+#action >+identify &1utters the word 'uoculoihuyl'={#print ("$1utters the word 'IDENTIFY'")}
+#action >+watchroom &1utters the words 'xahqp faaw'={#print ("$1utters the words 'WATCH ROOM'")}
+#action >+magicmissile &1utters the words 'waouq wuggurz'={#print ("$1utters the words 'MAGIC MISSILE'")}
+#action >+detectmagic &1utters the words 'oculoinfra waouq'={#print ("$1utters the words 'DETECT MAGIC'")}
+#action >+earthquake &1utters the word 'zabrahpdjatz'={#print ("$1utters the word 'EARTHQUAKE'")}
+#action >+shockinggrasp &1utters the words 'gpaqtuio ofags'={#print ("$1utters the words 'SHOCKING GRASP'")}
+#action >+shroud &1utters the word 'gpfaje'={#print ("$1utters the word 'SHROUD'")}
+#action >+scry &1utters the word 'gqfl'={#print ("$1utters the word 'SCRY'")}
+#action >+portal &1utters the word 'safhar'={#print ("$1utters the word 'PORTAL'")}
+#action >+nightvision &1utters the words 'iuoph zuguai'={#print ("$1utters the words 'NIGHT VISION'")}
+
+
+#action >+curse &1utters the word 'judifgz'={#print ("$1utters the word 'CURSE'")}
+#action >+controlweather &1utters the words 'qaihfar xzahpzf'={#print ("$1utters the words 'CONTROL WEATHER'")}

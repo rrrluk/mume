@@ -1,0 +1,56 @@
+#("      PK TARGETING ALIASES     ")
+#alias ttb=#if (*$(1)) tar $1.*bear*; #else tar *bear*
+#alias ttd=#if (*$(1)) tar $1.*dwarf*; #else tar *dwarf*
+#alias tte=#if (*$(1)) tar $1.*elf*; #else tar *elf*
+#alias tthe=#if (*$(1)) tar $1.*half-elf*; #else tar *half-elf*
+#alias tth=#if (*$(1)) tar $1.*hobbit*; #else tar *hobbit*
+#alias tto=#if (*$(1)) tar $1.*orc*; #else tar *orc*
+#alias ttm=#if (*$(1)) tar $1.*man*; #else tar *man*
+#alias ttt=#if (*$(1)) tar $1.*troll*; #else tar *troll*
+#alias ttw=#if (*$(1)) tar $1.*hobbit*; #else tar *hobbit*
+#alias ttz=#if (*$(1)) tar $1.*zaugurz*; #else tar *zaugurz*
+
+#alias trb={tt *bear*;tr}
+#alias trd={tt *dwarf*;tr}
+#alias tre={tt *elf*;tr}
+#alias trhe={tt *half-elf*;tr}
+#alias trh={tt *hobbit*;tr}
+#alias tro={tt *orc*;tr}
+#alias trm={tt *man*;tr}
+#alias trt={tt *troll*;tr}
+#alias trw={tt *hobbit*;tr}
+#alias trz={tt *zaugurz*;tr}
+
+#alias kb=#if (*$(1)) hit $1.*bear*; #else hit *bear*
+#alias kb2=kb 2
+#alias kb3=kb 3
+#alias kd=#if (*$(1)) hit $1.*dwarf*; #else hit *dwarf*
+#alias kd2=kd 2
+#alias kd3=kd 3
+#alias ke=#if (*$(1)) hit $1.*elf*; #else hit *elf*
+#alias ke2=ke 2
+#alias ke3=ke 3
+#alias khe=#if (*$(1)) hit $1.*half-elf*; #else hit *half-elf*
+#alias khe2=khe 2
+#alias khe3=khe 3
+#alias kh=#if (*$(1)) hit $1.*hobbit*; #else hit *hobbit*
+#alias kh2=kh 2
+#alias kh3=kh 3
+#alias ko=#if (*$(1)) hit $1.*orc*; #else hit *orc*
+#alias ko2=ko 2
+#alias ko3=ko 3
+#alias km=#if (*$(1)) hit $1.*man*; #else hit *man*
+#alias km2=km 2
+#alias km3=km 3
+#alias kw=#if (*$(1)) hit $1.*hobbit*; #else hit *hobbit*
+#alias kw2=kw 2
+#alias kw3=kw 3
+#alias kz=#if (*$(1)) hit $1.*zaugurz*; #else hit *zaugurz*
+#alias kz2=kz 2
+#alias kz3=kz 3
+
+#alias la=#if (*$(1)) label $1 tt; #else label tt
+
+
+
+#alias oie=ask sage ost-in-edhil

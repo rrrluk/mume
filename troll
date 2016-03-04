@@ -1,0 +1,11 @@
+#alias report=info %.reports: %z/%Z hits and %j/%J moves.
+#action >+repp ^reports:=emote $0
+
+#mark *north*=bold red
+#mark *south*=bold red
+#mark *east*=bold red
+#mark *west*=bold red
+#mark *up*=bold red
+#mark *down*=bold red
+
+#alias eatcopper=#20 {drop 1 copper;eat penny}

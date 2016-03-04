@@ -1,0 +1,346 @@
+#("   ALERTNESS, MOOD, SPELL SPEED   ")
+#alias an=change alert normal
+#alias ap=change alert paranoid
+
+#alias mw=change mood wimpy
+#alias ma=change mood aggr
+#alias mn=change mood normal
+#alias mp=change mood prudent
+#alias mb=change mood brave
+#alias mood=change mood $0
+
+#alias spq=change spell quick
+#alias spf=change spell fast
+#alias spn=change spell normal
+#alias spc=change spell careful
+#alias spt=change spell thoro
+
+#("      SCOUTING     ")
+#alias scn=scout n
+#alias sce=scout e
+#alias scs=scout s
+#alias scw=scout w
+#alias scu=scout u
+#alias scd=scout d
+
+#("      REPORTING    ")
+#alias report=info %.reports: %z/%Z Hits %e/%E Mana and %j/%J Moves.
+#alias repog=info %.groupreports: %z/%Z Hits %e/%E Mana and %j/%J Moves.
+#alias repo=report
+#action >+repp ^reports:=emote $0
+#action %+repg ^groupreports: (.*)=gt has $2
+#alias tnl=info %.needs: %X xps and %T tps to level.
+#action >+tnl ^needs:=emote $0
+#alias stat2=inf OB: %O, DB: %D, PB: %k, Armour: %A%%. Wimpy: %y. Mood: %Y.%.Needed: %X xp, %T tp. Gold: %g. Lvl: %l. PK: %K.%.Total xp: %x. Total tp: %t.%.%f
+
+#alias satar=sa TARGET is: ${target}
+#alias ntar=nar DO ${target}
+#alias ni=nar incap
+#alias nin=nar IN
+#alias ndo=nar DO
+#alias nq=nar quakes
+#alias nh=nar HELP
+#alias nb=nar bashed
+
+#("    INFO AND SETTINGS  ")
+#alias align=inf %q
+#alias war=inf %K
+#alias tassin=inf %C - %F
+#alias wimp=change wimp $0
+
+
+#("    REPLY, AFK AND XMESSAGE ALIASES / ACTIONS    ")
+
+#action %+tell ^[[:cntrl:]\[[:digit:]m]*([^; ]+) tells you '(.*)'={#print;#var $REPLY=$2;#var $MESSAGE="\'$3\'";handle_tell}
+#alias handle_tell={#if (@afk > 0) handle_tell_afk; #if (@xmessage > 0) handle_tell_xmessage}
+#alias handle_tell_afk=tell ${REPLY} Sorry I am AFK at the moment. Try again later.
+#alias handle_tell_xmessage=#! xmessage "${REPLY} tells you: '${MESSAGE}'" &
+#alias re=tell ${REPLY} $0
+
+#(@xmessage = 0)
+#alias xmessage_on={#(@xmessage = 1);#print (attr "green"+"*** tell xmessage "+attr "bold yellow"+"activated"+noattr+attr "green"+" ***"+noattr)}
+#alias xmessage_off={#(@xmessage = 0);#print (attr "green"+"*** tell xmessage "+attr "bold yellow"+"disabled"+noattr+attr "green"+" ***"+noattr)}
+#alias xmessage={#if (@xmessage > 0) xmessage_off; #else xmessage_on}
+
+#(@afk = 0)
+#alias afk_on={#(@afk = 1);#print (attr "green"+"*** AFK autoreply "+attr "bold yellow"+"activated"+noattr+attr "green"+" ***"+noattr)}
+#alias afk_off={#(@afk = 0);#print (attr "green"+"*** AFK autoreply "+attr "bold yellow"+"disabled"+noattr+attr "green"+" ***"+noattr)}
+#alias afk={#if (@afk > 0) afk_off; #else afk_on}
+#alias back=afk_off
+
+
+#("    ARCHERY    ")
+#alias daa=drop all.arrow
+#alias gar=get all.arrow
+#alias garc=get all.arrow all.corpse
+#alias paq=put all.arrow quiver
+#alias rec={get all.arrow; get all.arrow all.corpse; put all.arrow quiver}
+#alias liq={look in quiver}
+
+#("    CONTAINER & LIGHT MANAGEMENT    ")
+#alias ds=drink ${skin}
+#alias pws=pour water ${skin}
+#alias dw=drink water
+#alias ef=eat food
+#alias gp=get $1 ${pack}
+#alias pp=put $1 ${pack}
+#alias setpack=#var $pack=$1
+#alias lp=look in ${pack}
+#alias ls=look in ${sable}
+#alias gs=get $1 ${sable}
+#alias ps=put $1 ${sable}
+#alias setsable=#var $sable=$1
+#alias lm=label $1 ${mount}
+#alias gm=give $1 ${mount}
+#alias um=unsaddle ${mount} all
+#alias lim=look in moneybag
+#alias tm=take $1 ${money} moneybag
+#alias pm=put $1 ${money} moneybag
+
+#("    SEARCHING / REVEALING   ")
+#alias rq=reveal quick
+#alias rt=reveal thoro
+#alias sq=search q
+#alias set=search t
+#alias fq=flush q
+#alias ft=flush thoro
+
+#("     CORPSE MANAGEMENT    ")
+#alias nyli={ \
+	#if (*$(2)) { \
+		#for (\@1=$1;\@1<=$2;\@1++) \
+			#send butcher \@1.corpse}; \
+	#else #if (%%$(1)==$(1)) \
+		#send butcher $1.corpse; \
+	#else #if (*$(1)) \
+		#send butcher $1; \
+	#else \
+		#send butcher corpse \
+}
+#alias scc=#if (*$(1)) scalp $1.corpse; #else scalp corpse
+#alias dc=#if (*$(1)) decap $1.corpse; #else decap corpse
+#alias drc=#if (*$(1)) drain $1.corpse; #else drain corpse
+#alias ggc=#if (*$(1)) get coins $1.corpse; #else get coins corpse
+#alias lootg=get all.coins all.corpse
+#alias loot=#if (*$(2)) {get all.$1;get all.$1 all.corpse;give all.$1 $2}; #else {get all.$1;get all.$1 all.corpse}
+#alias gc=#if (*$(2)) get $1 $2.corpse; #else get $1 corpse
+#alias ec=#if (*$(1)) look in $1.corpse; #else look in corpse
+#alias gac=#if (*$(1)) get all $1.corpse; #else get all corpse
+#alias ga={gac;put all pack;gac}
+#alias lootme=get all ${PLAYER}-corpse
+#alias dr={ \
+	#if (*$(2)) { \
+		#for (\@1=$1;\@1<=$2;\@1++) \
+			#send drag \@1.corpse}; \
+	#else #if (%%$(1)==$(1)) \
+		#send drag $1.corpse; \
+	#else #if (*$(1)) \
+		#send drag $1; \
+	#else \
+		#send drag \
+}
+
+#("    TARGETING, TRACKING, DOORS, HITTING      ")
+#alias tr=track ${trtarget}
+#alias tr={ \
+	#if (*$(1)) { \
+		tt $1; \
+		#send track $1}; \
+	#else \
+		#send track ${trtarget}\
+}
+#alias wh=where ${trtarget}
+
+#alias x=exa ${target}
+#alias et=exa ${target}
+#alias et={ \
+	#if (*$(2)) { \
+		#for (\@1=$1;\@1<=$2;\@1++) \
+			#send exa \@1.${target}}; \
+	#else #if (%%$(1)==$(1)) \
+		#send exa $1.${target}; \
+	#else #if (*$(1)) \
+		#send exa $1; \
+	#else \
+		#send exa ${target} \
+}
+#alias ct=con ${target}
+#alias ct={ \
+	#if (*$(2)) { \
+		#for (\@1=$1;\@1<=$2;\@1++) \
+			#send con \@1.${target}}; \
+	#else #if (%%$(1)==$(1)) \
+		#send con $1.${target}; \
+	#else #if (*$(1)) \
+		#send con $1; \
+	#else \
+		#send con ${target} \
+}
+
+
+#alias k=#if (*$(1)) hit $0; #else hit ${target}
+#alias bb=bash ${target}
+#alias bd=#if (*$(1)) bash dis $0; #else bash dis
+
+#alias set_tar=#var $target=$1
+#alias show_tar=#print (attr "green"+"*** Target is: "+attr "bold yellow"+"${target}"+noattr+attr "green"+" ***"+noattr)
+
+#alias set_track=#var $trtarget=$1
+#alias show_track=#print (attr "green"+"*** Tracking: "+attr "bold yellow"+"${trtarget}"+noattr+attr "green"+" ***"+noattr)
+
+#alias tar={#if (*$(1)) set_tar $0;show_tar}
+#alias tt={#if (*$(1)) set_track $0;show_track}
+
+#alias trph={tt pack;tr}
+#alias trpo={tt pony;tr}
+#alias trdo={tt docile;tr}
+#alias trhw={tt hungry;tr}
+#alias trmu={tt mule;tr}
+#alias trrh={tt rohirrim;tr}
+#alias trth={tt trained;tr}
+#alias trwh={tt warhorse;tr}
+
+#("     DOOR MANAGEMENT        ")
+#alias ce=close exit $1
+#alias cen=ce n
+#alias cee=ce e
+#alias ces=ce s
+#alias cew=ce w
+#alias ceu=ce u
+#alias ced=ce d
+
+#alias oe=open exit $1
+#alias oen=oe n
+#alias oee=oe e
+#alias oes=oe s
+#alias oew=oe w
+#alias oeu=oe u
+#alias oed=oe d
+
+#alias le=lock exit $1
+#alias len=le n
+#alias lee=le e
+#alias les=le s
+#alias lew=le w
+#alias leu=le u
+#alias led=le d
+
+#alias ue=unlock exit $1
+#alias uen=ue n
+#alias uee=ue e
+#alias ues=ue s
+#alias uew=ue w
+#alias ueu=ue u
+#alias ued=ue d
+
+#alias pe=pick exit $1
+#alias pen=pe n
+#alias pee=pe e
+#alias pes=pe s
+#alias pew=pe w
+#alias peu=pe u
+#alias ped=pe d
+
+
+#alias Open={set_latestdoor $0;open $0}
+#alias Close={set_latestdoor $0;close $0}
+#alias Pick={set_latestdoor $0;pick $0}
+#alias Lock={set_latestdoor $0;lock $0}
+#alias Unlock={set_latestdoor $0;unlock $0}
+#alias Knock={set_latestdoor $0;knock $0}
+#alias Bash={set_latestdoor $0;bash $0}
+
+#alias od=Open ${door}
+#alias cd=Close ${door}
+#alias pd=Pick ${door}
+#alias ld=Lock ${door}
+#alias ud=Unlock ${door}
+#alias kd=Knock ${door}
+#alias bdo=Bash ${door}
+#alias set_door=#var $door=$0
+#alias set_latestdoor=#var $latest=$0
+#($latest = "exit")
+#alias sdl=sd ${latest}
+#alias show_door=#print (attr "green"+"*** Door is: "+attr "bold yellow"+"${door}"+noattr+attr "green"+" ***"+noattr)
+#alias sd={#if (*$(1)) set_door $0;show_door}
+#alias sdq={#if (*$(1)) set_door $0; #else show_door}
+#alias sde={#if (*$(1)) sd exit $1;#else sd exit}
+#($door = "exit")
+
+#alias od1=Open ${door1}
+#alias cd1=Close ${door1}
+#alias pd1=Pick ${door1}
+#alias ld1=Lock ${door1}
+#alias ud1=Unlock ${door1}
+#alias set_door1=#var $door1=$0
+#alias show_door1=#print (attr "green"+"*** Door 1 is: "+attr "bold yellow"+"${door1}"+noattr+attr "green"+" ***"+noattr)
+#alias sd1={#if (*$(1)) set_door1 $0;show_door1}
+#alias sdq1={#if (*$(1)) set_door1 $0; #else show_door1}
+#($door1 = "exit")
+
+#alias od2=Open ${door2}
+#alias cd2=Close ${door2}
+#alias pd2=Pick ${door2}
+#alias ld2=Lock ${door2}
+#alias ud2=Unlock ${door2}
+#alias set_door2=#var $door2=$0
+#alias show_door2=#print (attr "green"+"*** Door 2 is: "+attr "bold yellow"+"${door2}"+noattr+attr "green"+" ***"+noattr)
+#alias sd2={#if (*$(1)) set_door2 $0;show_door2}
+#alias sdq2={#if (*$(1)) set_door2 $0; #else show_door2}
+#($door2 = "exit")
+
+#alias od3=Open ${door3}
+#alias cd3=Close ${door3}
+#alias pd3=Pick ${door3}
+#alias ld3=Lock ${door3}
+#alias ud3=Unlock ${door3}
+#alias set_door3=#var $door3=$0
+#alias show_door3=#print (attr "green"+"*** Door 3 is: "+attr "bold yellow"+"${door3}"+noattr+attr "green"+" ***"+noattr)
+#alias sd3={#if (*$(1)) set_door3 $0;show_door3}
+#alias sdq3={#if (*$(1)) set_door3 $0; #else show_door3}
+#($door3 = "exit")
+
+#alias sda={show_door;show_door1;show_door2;show_door3}
+
+
+
+#("      MISC ALIASES       ")
+#alias buw=burn web
+#alias sr=seek rivendell
+#alias tal=train all
+#alias setweapon1=#var $weapon1=$1
+#alias setweapon2=#var $weapon2=$1
+#alias suic={gp pipe;wield pipe;rest;smoke;draw ${weapon1};stand}
+#alias flo=flee off
+
+#alias qf={g flask all;quaff flask}
+#alias qd={g draught all;quaff draught}
+#alias qz={g zaugurz-draught all;quaff zaugurz-draught}
+#alias qb={g antidote all;quaff antidote}
+#alias qm={g miruvor all;quaff miruvor}
+#alias mir={g miruvor all;quaff miruvor}
+
+#alias gmp=gp meat
+#alias ws={wake;stand}
+#alias rock={gp rock;#if (*$(1)) throw rock $0;#else throw rock ${door};g rock}
+#alias rd=rock $0
+#alias rx=rock exit $1
+#alias candle={gp candle;wi candle;use candle;wield ${weapon1}}
+#alias so=#if (*$(1)) say open $0;#else say open
+#alias gk=get all.key all.corpse
+#alias pbs=use pale $1
+#alias pale=use pale $1
+#alias uh=use woodenhorn
+#alias ub={#send unbar gate;open gate}
+#alias bg={close gate;#send bar gate}
+#alias bar={close exit;#send bar exit}
+#alias unbar={#send unbar exit;open exit}
+#alias pc=pull crank
+#alias pl=pull lever $0
+#alias labelclear=label please remove all of them
+#alias temp=weather local
+#alias readoie={rest;wield book;unlock book;open book;read book;draw ${weapon1}}
+#alias pkk=put key keyring
+#alias gkk=get key keyring
+#alias pb=push boulder $0
+#alias kp=kill plant

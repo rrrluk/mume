@@ -1,0 +1,108 @@
+#("      HERBS --- SUBS AND ALIASES       ")
+
+#alias wcp=#if (*$(1)) {wield $1;crush $1}; #else {wield plant;crush plant}
+#alias pk=put $1 kit
+
+#alias mixtrav1={gp ginseng;gp tarragon;gp clover}
+#alias mixtrav2={put ginseng kit;put tarragon kit;put clover kit}
+#alias mixtrav={mixtrav1;mixtrav2;mix kit}
+
+#alias mixanti1={#2 gp blackberries;gp lily;gp figwort;gp athelas}
+#alias mixanti2={#2 put blackberries kit;put lily kit;put figwort kit;put athelas kit}
+#alias mixanti={mixanti1;mixanti2;mix kit}
+
+#alias mixarach1={gp bat;gp salamander;gp greyfluid-sack}
+#alias mixarach2={put bat kit;put salamander kit;put greyfluid-sack kit}
+#alias mixarach={mixarach1;mixarach2;mix kit}
+
+#alias mixvenom1={gp bat;gp salamander;gp smallfluid-sack}
+#alias mixvenom2={put bat kit;put salamander kit;put smallfluid-sack kit}
+#alias mixvenom={mixvenom1;mixvenom2;mix kit}
+
+#alias mixdraught1={gp bat;gp tarragon;gp salamander;gp blood}
+#alias mixdraught2={put bat kit;put tarragon kit;put salamander kit;put blood kit}
+#alias mixdraught={mixdraught1;mixdraught2;mix kit}
+
+#alias mixbannock1={gp flour;gp egg;gp egg;gp egg;gp honey}
+#alias mixbannock2={put flour kit;put egg kit;put egg kit;put egg kit;put honey kit}
+#alias mixbannock={rest;mixbannock1;mixbannock2;mix kit}
+
+#alias mixclear1={gp juniper;gp mauve;gp sage;gp thyme}
+#alias mixclear2={pk juniper;pk mauve;pk sage;pk thyme}
+#alias mixclear={rest;mixclear1;mixclear2;mix kit}
+
+#alias hantid=#print ("ANTIDOTE..: 2xblackberries, water lily petals, figwort, athelas")
+#alias harach=#print ("ARACHNIA..: grey-fluid sack, salamander tail, bat fur")
+#alias hbella=#print ("BELLADONNA: tongue of frog, belladonna, red mushroom")
+#alias hbelladonna=bella
+#alias hcle=#print ("CLEAR-THOU: juniper, mauve, sage, thyme")
+#alias hdraught=#print ("DRAUGHT...: batfur, tarragon, salamander tail, vial of preserved blood")
+#alias herbs={#if ("$0"=="") {htrenn;hbella;hsoothing;hvenom;harach;hwalking;hdraught;hantid;htrav;hcle;hskil;htrenn}; #else #! grep -A 5 -B 3 --ignore-case $0 herbs.txt}
+#alias hseeing=#print ("SEEING: bag of cinnamon, rosemary leaves, phosporescent moss")
+#alias hskil=#print ("SKILL-OIL.: tincture, paprika, rose petal, vanilla, 2xrosemary petal")
+#alias hsoothing=#print ("SOOTHING..: honey, sage, thyme, blackcurrent, waterlily")
+#alias htrav=#print ("TRAVELLING: ginseng, tarragon, clover")
+#alias htrenn=#print ("------------------------------------------------------------------------")
+#alias hvenom=#print ("VENOM.....: salamander tail, small rattle sack, bat fur")
+#alias hwalking=#print ("WALKING...: juniper, clover, majoram, cloves")
+
+#alias herbs={#if ("$0"=="") {htrenn;hbella;hsoothing;hvenom;harach;hwalking;hdraught;hantid;htrav;hcle;hskil;htrenn}; #else #! grep -A 5 -B 3 --ignore-case $0 herbs.txt}
+
+
+#action >+kit_skillfuloil bean, petals, powder, tincture and two parts of leaves={#print ("$0 ("+attr "bold cyan"+"Skillful-oil"+noattr+")")}
+#action >+kit_drakeslumber mushroom, hemlock, mass, root, flowers and berries={#print ("$0 ("+attr "bold cyan"+"Drake-slumber"+noattr+")")}
+#action >+kit_baker three parts of egg, flour and honey=#print ("$0 ("+attr "bold cyan"+"Baker"+noattr+")")
+#action >+kit_antidote two parts of blackberries, leaves, petals and petals=#print ("$0 ("+attr "bold cyan"+"Antidote"+noattr+")")
+#action >+kit_soothing berries, honey, leaves, petals and leaves=#print ("$0 ("+attr "bold cyan"+"Soothing"+noattr+")")
+#action >+kit_clearthought petals, leaves, leaves and berries=#print ("$0 ("+attr "bold cyan"+"Clear-thought"+noattr+")")
+
+
+#action >+herb_figwort1 A tall plant grows here, with grey-green leaves and grey flowers.=#print ("$0 ("+attr "bold cyan"+"Figwort"+noattr+")")
+#action >+herb17 A large thorny branched shrub is growing here.=#print ("A large thorny branched shrub is growing here. ("+attr "bold cyan"+"Blackberries"+noattr+")")
+#action >+herb18 A low shrub with bright green, oblong leaves is growing here.=#print ("A low shrub with bright green, oblong leaves is growing here. ("+attr "bold cyan"+"Blueberries"+noattr+")")
+#action >+herb30 A short evergreen plant, with slightly bluish needles, grows here.=#print ("A short evergreen plant, with slightly bluish needles, grows here. ("+attr "bold cyan"+"Juniper"+noattr+")")
+#action >+herb3 A small evergreen plant grows here, its woody stems reaching two feet.=#print ("A small evergreen plant grows here, its woody stems reaching two feet. ("+attr "bold cyan"+"Tarragon"+noattr+")")
+#action >+herbmarjoram2 A thin, hairy plant, with small, oval leaves, grows here.=#print ("A thin, hairy plant, with small, oval leaves, grows here. ("+attr "bold cyan"+"Marjoram"+noattr+")")
+#action >+herbath A small plant grows here, with long, pointed leaves and flowers at its top.=#print ("A small plant grows here, with long, pointed leaves and flowers at its top. ("+attr "bold cyan"+"Athelas"+noattr+")")
+#action >+herb8 A sticky mass of plant matter is lying here.=#print ("A sticky mass of plant matter is lying here. ("+attr "bold cyan"+"Milkweed"+noattr+")")
+#action >+herb1a A tall plant grows here, with grey-green leaves and grey flowers.=#print ("A tall plant grows here, with grey-green leaves and grey flowers. ("+attr "bold cyan"+"Figwort"+noattr+")")
+#action >+herb_sage1 A waist-high evergreen shrub grows here, with thick, reaching branches.=#print ("A waist-high evergreen shrub grows here, with thick, reaching branches. ("+attr "bold cyan"+"Sage"+noattr+")")
+#action >+herb19 A woody evergreen plant grows here, with many stems reaching upward.=#print ("A woody evergreen plant grows here, with many stems reaching upward. ("+attr "bold cyan"+"Rosemary"+noattr+")")
+
+#action >+herb10 &1 piles of grey petals=#print ("$1 piles of grey petals ("+attr "bold cyan"+"Figwort"+noattr+")")
+#action >+herbbb &1blackberries&2=#print ("$1blackberries$2 ("+attr "bold cyan"+"Blackberries"+noattr+")")
+#action >+herbar1 &1grey fluid-sack&2=#print ("$1grey-fluid$2 ("+attr "bold cyan"+"Arachnia"+noattr+")")
+#action >+herb_sage2 &1grey-green leaves&2=#print ("$1grey-green leaves$2 ("+attr "bold cyan"+"Sage"+noattr+")")
+#action >+herbath1 &1long, slender green leaves&2=#print ("$1long, slender green leaves$2 ("+attr "bold cyan"+"Athelas"+noattr+")")
+#action >+herb16 &1many-branched shrub&2=#print ("$1many-branched shrub$2 ("+attr "bold cyan"+"Thyme"+noattr+")")
+#action >+herb31 &1of hard, round, black berries&2=#print ("$1of hard, round, black berries$2 ("+attr "bold cyan"+"Juniper"+noattr+")")
+#action >+herb5 &1of narrow, fragrant leaves&2=#print ("$1of narrow, fragrant leaves$2 ("+attr "bold cyan"+"Tarragon"+noattr+")")
+#action >+herbmarjoram &1of pale-green, crushed leaves&2=#print ("$1of pale-green, crushed leaves$2 ("+attr "bold cyan"+"Marjoram"+noattr+")")
+#action >+herbcarda &1short flower&2with purple bloom&3=#print ("$1short flower$2with purple bloom$3 ("+attr "bold cyan"+"Cardamon"+noattr+")")
+#action >+herbbf1 &1short, black fur&2=#print ("$1short, black fur$2 ("+attr "bold cyan"+"Bat Fur"+noattr+")")
+#action >+herbsal1 &1short, moist tail&2=#print ("$1short, moist tail$2 ("+attr "bold cyan"+"Salamander"+noattr+")")
+#action >+herbve1 &1small fluid-sack&2=#print ("$1small fluid-sack$2 ("+attr "bold cyan"+"Venom"+noattr+")")
+#action >+herbath2 &1small plant, with long leaves&2=#print ("$1small plant, with long leaves$2 ("+attr "bold cyan"+"Athelas"+noattr+")")
+#action >+herb2 &1some grey petals&2=#print ("$1some grey petals$2 ("+attr "bold cyan"+"Figwort"+noattr+")")
+#action >+herb1 &1tall, grey-green plant&2=#print ("$1tall, grey-green plant$2 ("+attr "bold cyan"+"Figwort"+noattr+")")
+#action >+herb11 &1white petals&2=#print ("$1white petals$2 ("+attr "bold cyan"+"Water Lily"+noattr+")")
+#action >+herbthi &1white-stemmed plants, with blue flower heads grow&2=#print ("$1white-stemmed plants, with blue flower heads grow$2 ("+attr "bold cyan"+"Thistle"+noattr+")")
+#action >+herb4 Some grey petals have been scattered about.=#print ("Some grey petals have been scattered about.. ("+attr "bold cyan"+"Figwort"+noattr+")")
+#action >+herb15 There are &1, woody stemmed plants here.=#print ("There are $1 woody, stemmed plants here.. ("+attr "bold cyan"+"Tarragon"+noattr+")")
+#action >+herb9 &1a sticky mass of stems, leaves and sap&2=#print ("$1a sticky mass of stems, leaves and sap$2 ("+attr "bold cyan"+"Milkweed"+noattr+")")
+#action >+herb20 &1a woody, many-stemmed plant&2={#print ("$1a woody, many-stemmed plant$2 ("+attr "bold cyan"+"Rosemary"+noattr+")")}
+#action >+herb21 &1needlelike leaves&2={#print ("$1several needlelike leaves$2 ("+attr "bold cyan"+"Rosemary"+noattr+")")}
+#action >+herb24 &1white, egg-shaped berries&2={#print ("$1white, egg-shaped berries$2 ("+attr "bold cyan"+"Baneberries"+noattr+")")}
+#action >+herb25 &1a slender flowering plant&2={#print ("$1a slender flowering plant$2 ("+attr "bold cyan"+"Milkweed"+noattr+")")}
+#action >+herb26 &1a foul-smelling root&2={#print ("$1a foul-smelling root$2 ("+attr "bold cyan"+"Valerian"+noattr+")")}
+#action >+herb27 &1some orange-red flowers&2={#print ("$1some orange-red flowers$2 ("+attr "bold cyan"+"Poppy"+noattr+")")}
+#action >+herb28 &1pungent red powder&2={#print ("$1pungent red powder$2 ("+attr "bold cyan"+"Paprika"+noattr+")")}
+#action >+herb6 &1woody, stemmed plant&2={#print ("$1woody, stemmed plant$2 ("+attr "bold cyan"+"Tarragon"+noattr+")")}
+#action >+herbmarjoram3 &1thin, hairy plant&2={#print ("$1thin, hairy plant$2 ("+attr "bold cyan"+"Marjoram"+noattr+")")}
+#action >+blackcurrant1 A shrub with maple-like leaves is growing here.=#print ("A shrub with maple-like leaves is growing here. ("+attr "bold cyan"+"Blackcurrant"+noattr+")")
+#action >+milkweed1 A slender plant grows here, with clusters of tiny pink flowers atop its stem.=#print ("A slender plant grows here, with clusters of tiny pink flowers atop its stem. ("+attr "bold cyan"+"Milkweed"+noattr+")")
+#action >+hemlock1 A tall plant with a perfectly smooth stem gracefully marks the landscape.=#print ("A tall plant with a perfectly smooth stem gracefully marks the landscape. ("+attr "bold cyan"+"Hemlock"+noattr+")")
+#action >+poppy1 Some orange-red blossoms grow amid grey-green foliage.=#print ("Some orange-red blossoms grow amid grey-green foliage. ("+attr "bold cyan"+"Poppy"+noattr+")")
+#action >+paprika1 A small pile of pungent red powder lies here.=#print ("$0 ("+attr "bold cyan"+"Paprika"+noattr+")")
+#action >+thyme1 scented crushed leaves=#print ("$0 ("+attr "bold cyan"+"Thyme"+noattr+")")
+#action >+vanilla1 long, scented, brown bean=#print ("$0 ("+attr "bold cyan"+"Vanilla"+noattr+")")

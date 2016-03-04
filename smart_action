@@ -1,0 +1,15 @@
+#("TODO:        CREATE A SMART ACTION QUEUE        ")
+#action >sm5 ^Oops! You cannot go there riding!={#print;#var $SMART_ACTION=lead;#map -1}
+#action >sm4 ^You need to swim to go there={#print;#var $SMART_ACTION=swim;#map -1}
+#action >sm3 ^You need to climb to go there={#print;#var $SMART_ACTION=climb;#map -1}
+#action >sm2 ^You can't go into deep water={#print;#var $SMART_ACTION=lead;#map -1}
+#action >sm1 ^You are too exhausted={#print;#var $SMART_ACTION=bob;#map -1}
+#action >s9 ^&1 dismounts &2 and stops riding={#print;#var $SMART_ACTION=lead}
+#action >s10 ^&1 says 'lead'={#print;#var $SMART_ACTION=ride}
+#action >s8 ^&1 picks up &2 reins and starts riding={#print #var $SMART_ACTION=ride}
+#action >s7 ^Your light is becoming faint|^Your light has gone out={#print;#var $SMART_ACTION=cast 'create light' lantern}
+#action >s6 ^The detect invisible wears off={#print;#var $SMART_ACTION=cast t 'detect invis'}
+#action >s4 ^You begin to feel thirsty={#print;#var $SMART_ACTION=drink skin}
+#action >s3 ^You are thirsty={#print;#var $SMART_ACTION=drink skin}
+#action >s2 ^You begin to feel hungry={#print;#var $SMART_ACTION=food}
+#action >s1 ^You are hungry={#print;#var $SMART_ACTION=food}

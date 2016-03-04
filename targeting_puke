@@ -1,0 +1,48 @@
+#("      PK TARGETING ALIASES     ")
+#alias ttm=#if (*$(1)) tar $1.*man*; #else tar *man*
+#alias tto=#if (*$(1)) tar $1.*orc*; #else tar *orc*
+#alias ttt=#if (*$(1)) tar $1.*troll*; #else tar *troll*
+#alias ttw=#if (*$(1)) tar $1.*troll*; #else tar *troll*
+#alias ttz=#if (*$(1)) tar $1.*zaugurz*; #else tar *zaugurz*
+
+#alias trb={tt *bear*;tr}
+#alias trm={tt *man*;tr}
+#alias tro={tt *orc*;tr}
+#alias trt={tt *troll*;tr}
+#alias trw={tt *troll*;tr}
+
+#alias km=#if (*$(1)) hit $1.*man*; #else hit *man*
+#alias km2=km 2
+#alias km3=km 3
+#alias ko=#if (*$(1)) hit $1.*orc*; #else hit *orc*
+#alias ko2=ko 2
+#alias ko3=ko 3
+#alias ko4=ko 4
+#alias kt=#if (*$(1)) hit $1.*troll*; #else hit *troll*
+#alias kw=#if (*$(1)) hit $1.*troll*; #else hit *troll*
+#alias kw2=kw 2
+#alias kw3=kw 3
+#alias kz=#if (*$(1)) hit $1.*zaugurz*; #else hit *zaugurz*
+
+#alias la=#if (*$(1)) label $1 tt; #else label tt
+
+#("     PK SPELL TARGETING ALIASES      ")
+#alias hm=#if (*$(1)) hh $1.*man*; #else hh *man*
+#alias ho=#if (*$(1)) hh $1.*orc*; #else hh *orc*
+#alias hw=#if (*$(1)) hh $1.*troll*; #else hh *troll*
+
+#alias jm=#if (*$(1)) jj $1.*man*; #else jj *man*
+#alias jo=#if (*$(1)) jj $1.*orc*; #else jj *orc*
+#alias jw=#if (*$(1)) jj $1.*troll*; #else jj *troll*
+
+#alias bm=#if (*$(1)) bb $1.*man*; #else bb *man*
+#alias bo=#if (*$(1)) bb $1.*orc*; #else bb *orc*
+#alias bw=#if (*$(1)) bb $1.*troll*; #else bb *troll*
+
+#alias ym=#if (*$(1)) yy $1.*man*; #else yy *man*
+#alias yo=#if (*$(1)) yy $1.*orc*; #else yy *orc*
+#alias yw=#if (*$(1)) yy $1.*troll*; #else yy *troll*
+
+
+
+#alias oie=ask elrond ost-in-edhil

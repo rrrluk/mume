@@ -1,0 +1,30 @@
+#("        OPTIONS       ")
+#option -autoclear -reprint -exit -debug
+#delim normal
+#setvar mem=1048576
+#file =autosave
+
+#("        CAPTURE AND LOGON AUTOMATION     ")
+#(" #host aibiem.raadiopead 11010 ")
+#(" #host cheeselab.smartlink 11010 ")
+#host fire.pvv.org 4242
+#host ftp.smartlink.ee 11010
+#host cheeselab 11010
+#host klots.smartlink 11010
+#host localhost 3000
+#host localhost 11010
+#init ={#(@oldxp=@oldtp=@xp=@tp=0);#var $DOOR=exit;capturefname;startcapture}
+#alias capturefname={#var $logfile=!PLAYER=${PLAYER} ${MUMECMD}/logfilename.sh}
+#alias startcapture={#capture >${logfile}}
+#action %+detectmapper ^## CheeseLab MUME Mapping Tools={#print;#prompt +mapperlogin;#action -detectmapper}
+#prompt %-mapperlogin ^## Username:={#print;#send ($ACCOUNT);#prompt -mapperlogin;#prompt +mapperpass}
+#prompt %-mapperpass ^## Password:={#print;#option -echo -reprint;#send !echo $PASS;#option +echo;#prompt -mapperpass;#action +detectmapper}
+#(" #action %+init1 ^Last login={#print;#action +screenh;#action -init1;#action -init2;#request edit;#request prompt;change linkdrop 20;#option -reprint;time;change height} ")
+#action %+init1 ^Last login={#print;#action +screenh;#action -init1;#action -init2;#request edit;#request prompt;change linkdrop 20;#option -reprint;time;change height}
+#(" #action %+init2 ^Reconnecting.={#print;#action -init1;#action -init2;#request edit;#request prompt;change linkdrop 20;#option -reprint;time} ")
+#action %+init2 ^Reconnecting.={#print;#action -init1;#action -init2;#request edit;#request prompt;#option -reprint}
+#action >+login ^If you have never played MUME before={#identify;#print;#action +account;#action +init1;#action +init2;#send ($ACCOUNT);#option -echo -reprint;#send !echo $PASS;#option +echo}
+#action >+account ^Account menu={#print;#action -account;time;list;#send ("play "+$PLAYER)}
+#action >-screenh ^Current terminal height is &1.={#print;#action -screenh;change height 65535;#logonprocedure;change height $1}
+#alias reconnect={#zap main;#connect main}
+#alias #logonprocedure={inf;stat;prac;eq;in;l in moneybag;l in ${sable};l in ${pack};offer;gain;tps;train all}

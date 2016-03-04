@@ -1,0 +1,18 @@
+#savefile-version 6
+#host localhost 4242
+#delim normal
+#groupdelim @
+#init ={#(@oldxp=@oldtp=@xp=@tp=0);#var $DOOR=exit;capturefname;startcapture}
+#setvar mem=1048576
+#alias #logonprocedure={inf;stat;prac;eq;in;l in moneybag;l in ${sable};l in ${pack};offer;gain;tps;train all}
+#alias capturefname={#var $logfile=!PLAYER=${PLAYER} ${MUMECMD}/logfilename.sh}
+#alias reconnect={#zap main;#connect main}
+#alias startcapture={#capture >${logfile}}
+#action %+init1 ^Last login={#print;#action +screenh;#action -init1;#action -init2;#request edit;#request prompt;change linkdrop 20;#option -reprint;time;change height}
+#action %+init2 ^Reconnecting.={#print;#action -init1;#action -init2;#request edit;#request prompt;#option -reprint}
+#action >+login ^If you have never played MUME before={#identify;#print;#action +account;#action +init1;#action +init2;#send ($ACCOUNT);#option -echo -reprint;#send !echo $PASS;#option +echo}
+#action >+account ^Account menu={#print;#action -account;time;list;#send ("play "+$PLAYER)}
+#action >-screenh ^Current terminal height is &1.={#print;#action -screenh;change height 65535;#logonprocedure;change height $1}
+#($DOOR = "exit")
+#option -autoclear -autoprint -compact -debug +echo -exit -history
+#option -info +keyecho -reprint -sendsize -speedwalk -words -wrap

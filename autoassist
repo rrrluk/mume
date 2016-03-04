@@ -1,0 +1,69 @@
+#var $leader=Krae (K)
+
+#alias leader={#if (*$(1)) set_leader $0;show_leader}
+#alias set_leader=#var $leader=$0
+#alias show_leader=#print (attr "green"+"*** Leader is: "+attr "bold yellow"+"${leader}"+noattr+attr "green"+" ***"+noattr)
+
+#alias autoassist={#if (@autoassist_on > 0) autoassist_off;#else autoassist_on}
+#alias autoride={#if (@autoride_on > 0) autoride_off;#else autoride_on}
+
+
+#alias autoassist_on={ \
+#(@autoassist_on = 1); \
+#print (attr "green"+"*** autoassist "+attr "bold yellow"+"enabled"+noattr+attr "green"+" ***"+noattr); \
+#group exp on; \
+autoride_on \
+#action +zblam \
+}
+
+#alias autoassist_off={ \
+#(@autoassist_on = 0); \
+#print (attr "green"+"*** autoassist "+attr "bold yellow"+"disabled"+noattr+attr "green"+" ***"+noattr); \
+#group exp off; \
+autoride_off \
+#action -zblam \
+}
+
+
+#alias autoride_on={ \
+#(@autoride_on = 1); \
+#print (attr "green"+"*** autoride "+attr "bold yellow"+"enabled"+noattr+attr "green"+" ***"+noattr); \
+#group ride on; \
+#action +zblam \
+}
+
+#alias autoride_off={ \
+#(@autoride_on = 0); \
+#print (attr "green"+"*** autoride "+attr "bold yellow"+"disabled"+noattr+attr "green"+" ***"+noattr); \
+#group ride off; \
+#action -zblam \
+}
+
+#action >-dead1@exp is dead! R.I.P.={#print;ggc;#var @fighting=0}
+#action >-dead2@exp disappears into nothing.={#print;g all.coins;#var @fighting=0}
+#action >-flee@exp panics, and attempts to flee.={#print;#var @fighting=0}
+#action >-autoassist0@exp joins={#print;#if (@fighting==0) assist;#var @fighting=1}
+#action >-autoassist1@exp ^${leader} cleaves={#print;#if (@fighting==0) assist;#var @fighting=1}
+#action >-autoassist2@exp ^${leader} pounds={#print;#if (@fighting==0) assist;#var @fighting=1}
+#action >-autoassist3@exp ^${leader} slashes={#print;#if (@fighting==0) assist;#var @fighting=1}
+#action >-autoassist4@exp ^${leader} pierces={#print;#if (@fighting==0) assist;#var @fighting=1}
+#action >-autoassist5@exp ^${leader} hits={#print;#if (@fighting==0) assist;#var @fighting=1}
+#action >-order@exp ^${leader} orders you to '&1'={#print;#send $1}
+
+#action %-autolead@ride ^([^;]+) dismounts from .*, and stops riding (him|it).={#print;#if (\$2==$leader) lead}
+#action %-autoride@ride ^([^;]+) picks up .*'s reins and starts riding (him|it).={#print;#if (\$2==$leader) ride}
+#action >-autorest@exp ^${leader} sits down and rests.={#print;rest}
+#action %-autostand1@exp ^([^;]+) stops resting, and clambers on (his|her) feet.={#print;#if (\$2==$leader) stand}
+#action %-autostand2@exp ^([^;]+) clambers on (his|her) feet.={#print;#if (\$2==$leader) stand}
+#action >-autostand3@exp ^Nah... You feel too relaxed to do that..={#print;stand}
+#action >-autodrink1@exp ^You are thirsty.={#print;ds}
+#action >-autodrink2@exp ^You begin to feel thirsty.={#print;ds}
+#(" #action >-autoeat1@exp ^You are hungry.={#print;emote cooks some mushrooms ... ;cf;ef} ")
+#(" #action >-autoeat2@exp ^You begin to feel hungry.={#print;emote cooks some mushrooms ... ;cf;ef} ")
+#(" #action >-autoempty@exp ^It's empty already.={#print;emote tries to magically create some water ... ;cw skin} ")
+#action >-autosleep@exp ^${leader} lies down and falls asleep.={#print;rest}
+#(" #action >-autostr@exp ^You feel weaker.={#print;emote feels weaker;use topaz-ring} ")
+
+#(" #action >-autopat@exp ^${leader} pats you on your head.={#print;cast 'blind'} ")
+
+#action >-fangornbash@exp You regain control of your limbs as your head stops stinging.={#print;draw ${weapon1};assist}

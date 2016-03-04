@@ -1,0 +1,111 @@
+#("Spell Timers")
+
+#alias spelltimer_on={#print (attr "bold blue" + $last_line + noattr)}
+#alias spelltimer={#(@spelltimer=$1);#(@spelltimer_sec=(timer-@spelltimer)/1000%60);#if (@spelltimer_sec < 10) #print ($last_line+" ("+%((timer-@spelltimer)/1000/60)+":0"+%(@spelltimer_sec)+")"); #else #print ($last_line+" ("+%((timer-@spelltimer)/1000/60)+":"+%(@spelltimer_sec)+")");#var @spelltimer=;#var @spelltimer_sec=}
+#alias spelltimer_off={#(@spelltimer=$1);#(@spelltimer_sec=(timer-@spelltimer)/1000%60);#if (@spelltimer_sec < 10) #print (attr "bold blue"+$last_line+noattr+" (Last "+%((timer-@spelltimer)/1000/60)+":0"+%(@spelltimer_sec)+")"); #else #print (attr "bold blue"+$last_line+noattr+" (Last "+%((timer-@spelltimer)/1000/60)+":"+%(@spelltimer_sec)+")");#var @spelltimer=;#var @spelltimer_sec=}
+
+#(" ORKISH DRAUGHT ")
+#action >+setdraughttimer The draught burns down your throat, and a fiery feeling fills your limbs.={spelltimer_on;draughton}
+#action >-showdraughttimer ^- Orkish draught={spelltimer @spelltimer_draught}
+#action >-draughtdown As the warmth of the draught recedes from your limbs, you feel less energetic.={spelltimer_off @spelltimer_draught;draughtoff}
+#alias draughton={#(@spelltimer_draught=timer)#ac +showdraughttimer;#ac +draughtdown}
+#alias draughtoff={#var @spelltimer_draught=;#ac -showdraughttimer;#ac -draughtdown}
+
+
+#(" BLESS ")
+#action >+setblesstimer1 You begin to feel the light of Aman shine upon you.={spelltimer_on;blesson}
+#action >+setblesstimer2 You feel a renewed light shine upon you.={spelltimer_on;blesson}
+#action >-showblesstimer ^- bless={spelltimer @spelltimer_bless}
+#action >-blessdown The light of Aman fades away from you.={spelltimer_off @spelltimer_bless;blessoff}
+#alias blesson={#(@spelltimer_bless=timer);#ac +setblesstimer2;#ac +showblesstimer;#ac +blessdown}
+#alias blessoff={#var @spelltimer_bless=;#ac -setblesstimer2;#ac -showblesstimer;#ac -blessdown}
+
+
+#(" ARMOUR ")
+#action >+setarmourtimer1 A blue transparent wall slowly appears around you.={spelltimer_on;armouron}
+#action >+setarmourtimer2 Your magic armour is revitalised.={spelltimer_on;armouron}
+#action >-showarmourtimer ^- armour={spelltimer @spelltimer_armour}
+#action >-armourdown You feel less protected.={spelltimer_off @spelltimer_armour;armouroff}
+#alias armouron={#(@spelltimer_armour=timer);#ac +setarmourtimer2;#ac +showarmourtimer;#ac +armourdown}
+#alias armouroff={#var @spelltimer_armour=;#ac -setarmourtimer2;#ac -showarmourtimer;#ac -armourdown}
+
+
+#(" SHIELD ")
+#action >+setshieldtimer1 You feel protected.={spelltimer_on;shieldon}
+#action >+setshieldtimer2 Your protection is revitalised.={spelltimer_on;shieldon}
+#action >-showshieldtimer ^- shield={spelltimer @spelltimer_shield}
+#action >-shielddown Your magical shield wears off.={spelltimer_off @spelltimer_shield;shieldoff}
+#alias shieldon={#(@spelltimer_shield=timer);#ac +setshieldtimer2;#ac +showshieldtimer;#ac +shielddown}
+#alias shieldoff={#var @spelltimer_shield=;#ac -setshieldtimer2;#ac -showshieldtimer;#ac -shielddown}
+
+
+#(" STRENGTH ")
+#action >+setstrtimer1 You feel stronger.={spelltimer_on;stron}
+#action >+setstrtimer2 The duration of the strength spell has been improved.={spelltimer_on;stron}
+#action >-showstrtimer ^- strength={spelltimer @spelltimer_str}
+#action >-strdown You feel weaker.={spelltimer_off @spelltimer_str;stroff}
+#alias stron={#(@spelltimer_str=timer);#ac +setstrtimer2;#ac +showstrtimer;#ac +strdown}
+#alias stroff={#var @spelltimer_str=;#ac -setstrtimer2;#ac -showstrtimer;#ac -strdown}
+
+
+#(" SHROUD ")
+#action >+setshroudtimer1 You are surrounded by a misty shroud.={spelltimer_on;shron}
+#action >+setshroudtimer2 Your misty shroud is renewed.={spelltimer_on;shron}
+#action >-showshroudtimer ^- shroud={spelltimer @spelltimer_shroud}
+#action >-shrouddown You feel yourself exposed.={spelltimer_off @spelltimer_shroud;shroff}
+#alias shron={#(@spelltimer_shroud=timer);#ac +setshroudtimer2;#ac +showshroudtimer;#ac +shrouddown}
+#alias shroff={#var @spelltimer_shroud=;#ac -setshroudtimer2;#ac -showshroudtimer;#ac -shrouddown}
+
+
+#(" SENSE LIFE ")
+#action >+setsensetimer1 You feel your awareness improve.={spelltimer_on;senseon}
+#action >+setsensetimer2 Your awareness is refreshed.={spelltimer_on;senseon}
+#action >-showsensetimer ^- sense life={spelltimer @spelltimer_sense}
+#action >-sensedown You feel less aware of your surroundings.={spelltimer_off @spelltimer_sense;senseoff}
+#alias senseon={#(@spelltimer_sense=timer);#ac +setsensetimer2;#ac +showsensetimer;#ac +sensedown}
+#alias senseoff={#var @spelltimer_sense=;#ac -setsensetimer2;#ac -showsensetimer;#ac -sensedown}
+
+
+#(" BOB ")
+#action >+setbobtimer1 An energy begins to flow within your legs as your body becomes lighter.={spelltimer_on;bobon}
+#action >+setbobtimer2 The energy in your legs is refreshed.={spelltimer_on;bobon}
+#action >-showbobtimer ^- breath of briskness={spelltimer @spelltimer_bob}
+#action >-bobdown Your legs feel heavier.={spelltimer_off @spelltimer_bob;boboff}
+#alias bobon={#(@spelltimer_bob=timer)#ac +setbobtimer2;#ac +showbobtimer;#ac +bobdown}
+#alias boboff={#var @spelltimer_bob=;#ac -setbobtimer2;#ac -showbobtimer;#ac -bobdown}
+
+
+#(" SANC ")
+#action >+setsanctimer1 You start glowing.={spelltimer_on;sancon}
+#action >+setsanctimer2 Your aura glows more intensely.={spelltimer_on;sancon}
+#action >-showsanctimer ^- sanctuary={spelltimer @spelltimer_sanc}
+#action >-sancdown The white aura around your body fades.={spelltimer_off @spelltimer_sanc;sancoff}
+#alias sancon={#(@spelltimer_sanc=timer)#ac +setsanctimer2;#ac +showsanctimer;#ac +sancdown}
+#alias sancoff={#var @spelltimer_sanc=;#ac -setsanctimer2;#ac -showsanctimer;#ac -sancdown}
+
+
+#(" PROTECTION FROM EVIL ")
+#action >+setpfetimer1 You have a righteous feeling!={spelltimer_on;pfeon}
+#action >+setpfetimer2 You feel a renewed righteousness.={spelltimer_on;pfeon}
+#action >-showpfetimer ^- protection from evil={spelltimer @spelltimer_pfe}
+#action >-pfedown You feel less righteous.={spelltimer_off @spelltimer_pfe;pfeoff}
+#alias pfeon={#(@spelltimer_pfe=timer);#ac +setpfetimer2;#ac +showpfetimer;#ac +pfedown}
+#alias pfeoff={#var @spelltimer_pfe=;#ac -setpfetimer2;#ac -showpfetimer;#ac -pfedown}
+
+
+#(" DETECT EVIL ")
+#action >+setdevtimer1 You feel aware of all that is foul and evil.={spelltimer_on;devon}
+#action >+setdevtimer2 Your awareness of evil is refreshed.={spelltimer_on;devon}
+#action >-showdevtimer ^- detect evil={spelltimer @spelltimer_dev}
+#action >-devdown You sense the red in your vision disappear.={spelltimer_off @spelltimer_dev;devoff}
+#alias devon={#(@spelltimer_dev=timer);#ac +setdevtimer2;#ac +showdevtimer;#ac +devdown}
+#alias devoff={#var @spelltimer_dev=;#ac -setdevtimer2;#ac -showdevtimer;#ac -devdown}
+
+
+#(" DETECT MAGIC ")
+#action >+setdtmtimer1 You become sensitive of magical auras.={spelltimer_on;dtmon}
+#action >+setdtmtimer2 Your awareness of magical auras is renewed.={spelltimer_on;dtmon}
+#action >-showdtmtimer ^- detect magic={spelltimer @spelltimer_dtm}
+#action >-dtmdown Your perception of magical auras wears off.={spelltimer_off @spelltimer_dtm;dtmoff}
+#alias dtmon={#(@spelltimer_dtm=timer);#ac +setdtmtimer2;#ac +showdtmtimer;#ac +dtmdown}
+#alias dtmoff={#var @spelltimer_dtm=;#ac -setdtmtimer2;#ac -showdtmtimer;#ac -dtmdown}

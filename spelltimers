@@ -1,0 +1,58 @@
+#(" SPELL TIMERS ")
+
+
+#(" STRENGTH ")
+#action >+showstrtimer ^- strength={#print ("- strength ("+%((timer-${strtimer})/1000/60)+":"+%(((timer-${strtimer})/1000)-(((timer-${strtimer})/1000/60)*60))+")")}
+#action >+strdown ^You feel weaker.=#print ("===== STRENGTH DOWN (Last "+%((timer-${strtimer})/1000/60)+":"+%(((timer-${strtimer})/1000)-(((timer-${strtimer})/1000/60)*60))+") =====")
+#action >+setstrtimer1 ^You feel stronger.={#print;#($strtimer=%(timer))}
+#action >+setstrtimer2 ^The duration of the strength spell has been improved.={#print;#($strtimer=%(timer))}
+#($strtimer=%(timer))
+
+#(" BLESS ")
+#action >+blessdown ^The light of Aman fades away from you.=#print ("===== BLESS DOWN ==== (Last "+%((timer-${blesstimer})/1000/60)+":"+%(((timer-${blesstimer})/1000)-(((timer-${blesstimer})/1000/60)*60))+") =====")
+#action >+showblesstimer ^- bless={#print ("- bless ("+%((timer-${blesstimer})/1000/60)+":"+%(((timer-${blesstimer})/1000)-(((timer-${blesstimer})/1000/60)*60))+")")}
+#action >+setblesstimer1 ^You begin to feel the light of Aman shine upon you.={#print;#($blesstimer=%(timer))}
+#action >+setblesstimer2 ^You feel a renewed light shine upon you.={#print;#($blesstimer=%(timer))}
+#($blesstimer=%(timer))
+
+
+#(" SHIELD ")
+#action >+shielddown ^Your magical shield wears off.=#print (attr "bold"+"===== SHIELD DOWN ===="+noattr+" (Last "+%((timer-${shieldtimer})/1000/60)+":"+%(((timer-${shieldtimer})/1000)-(((timer-${shieldtimer})/1000/60)*60))+") =====")
+#action >+showshieldtimer ^- shield={#print ("- shield ("+%((timer-${shieldtimer})/1000/60)+":"+%(((timer-${shieldtimer})/1000)-(((timer-${shieldtimer})/1000/60)*60))+")")}
+#action >+setshieldtimer1 ^You feel protected.={#print;#($shieldtimer=%(timer))}
+#action >+setshieldtimer2 ^Your protection is revitalised.={#print;#($shieldtimer=%(timer))}
+#($shieldtimer=%(timer))
+
+
+#(" ARMOUR ")
+#action >+armourdown ^You feel less protected.=#print (attr "bold"+"===== ARMOUR DOWN ===="+noattr+" (Last "+%((timer-${armourtimer})/1000/60)+":"+%(((timer-${armourtimer})/1000)-(((timer-${armourtimer})/1000/60)*60))+") =====")
+#action >+showarmourtimer ^- armour={#print ("- armour ("+%((timer-${armourtimer})/1000/60)+":"+%(((timer-${armourtimer})/1000)-(((timer-${armourtimer})/1000/60)*60))+")")}
+#action >+setarmourtimer1 ^A blue transparent wall slowly appears around you.={#print;#($armourtimer=%(timer))}
+#action >+setarmourtimer2 ^Your magic armour is revitalised.={#print;#($armourtimer=%(timer))}
+#($armourtimer=%(timer))
+
+#(" DEPRESSION ")
+#action >+showdeptimer ^- depression={#print ("- depression ("+%((timer-${deptimer})/1000/60)+":"+%(((timer-${deptimer})/1000)-(((timer-${deptimer})/1000/60)*60))+")")}
+#action >+depdown ^Your heart feels lighter.=#print ("Your heart feels lighter. (Last "+%((timer-${deptimer})/1000/60)+":"+%(((timer-${deptimer})/1000)-(((timer-${deptimer})/1000/60)*60))+")")
+#action >+setdeptimer1 ^Alas, you realise that yet again the mighty knowledge of drowned={#print;#($deptimer=%(timer))}
+#($deptimer=%(timer))
+
+#(" BOB ")
+#action >+bobdown ^Your legs feel heavier.=#print ("===== B.O.B DOWN ==== (Last "+%((timer-${bobtimer})/1000/60)+":"+%(((timer-${bobtimer})/1000)-(((timer-${bobtimer})/1000/60)*60))+") =====")
+#action >+showbobtimer ^- breath of briskness={#print ("- breath of briskness ("+%((timer-${bobtimer})/1000/60)+":"+%(((timer-${bobtimer})/1000)-(((timer-${bobtimer})/1000/60)*60))+")")}
+#action >+setbobtimer1 ^An energy begins to flow within your legs as your body becomes lighter.={#print;#($bobtimer=%(timer))}
+#action >+setbobtimer2 ^The energy in your legs is refreshed.={#print;#($bobtimer=%(timer))}
+#($bobtimer=%(timer))
+
+#(" SANC ")
+#action >+sancdown ^The white aura around your body fades.=#print (attr "bold"+"===== SANCTUARY DOWN ===="+noattr+" (Last "+%((timer-${sanctimer})/1000/60)+":"+%(((timer-${sanctimer})/1000)-(((timer-${sanctimer})/1000/60)*60))+") =====")
+#action >+showsanctimer ^- sanctuary={#print ("- sanctuary ("+%((timer-${sanctimer})/1000/60)+":"+%(((timer-${sanctimer})/1000)-(((timer-${sanctimer})/1000/60)*60))+")")}
+#action >+setsanctimer1 ^You start glowing.={#print;#($sanctimer=%(timer))}
+#action >+setsanctimer2 ^Your aura glows more intensely.={#print;#($sanctimer=%(timer))}
+#($sanctimer=%(timer))
+
+#(" BLIND ")
+#action >+blinddown ^You feel a cloak of blindness dissolve.=#print ("===== BLIND OFF ==== (Last "+%((timer-${blindtimer})/1000/60)+":"+%(((timer-${blindtimer})/1000)-(((timer-${blindtimer})/1000/60)*60))+") =====")
+#action >+showblindtimer ^- blindness={#print ("- blindness ("+%((timer-${blindtimer})/1000/60)+":"+%(((timer-${blindtimer})/1000)-(((timer-${blindtimer})/1000/60)*60))+")")}
+#action >+setblindtimer1 ^You have been blinded!={#print;#($blindtimer=%(timer))}
+#($blindtimer=%(timer))

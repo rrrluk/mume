@@ -1,0 +1,31 @@
+#("      INCLUDE STANDARD EDITING KEYS  ")
+#exe <include/defkeys
+
+#("        CAPTURE AND LOGON AUTOMATION     ")
+#exe <include/logon
+
+#("      STANDARD MOVEMENT KEYBINDINGS   ")
+#exe <include/keys
+
+#("        MISC STUFF        ")
+#action >+linkdrop ^WARNING: inactivity timeout={#print;score}
+
+#("Find out room name and put it into a variable. NB! Works only if room colour is light green AND nothing else is set to light green")
+#(" #action >roomname ^[32\;1m&1[0m={#print;#var $roomname=($(1))} ")
+
+#("          REPORTING, XP/TP COUNTERS         ")
+#alias gain=info %.current xp: %x
+#alias tps=info %.current tps: %t
+#alias xp=inf %x total %X to level
+#alias tp=inf %t total %T to level
+#action >+travel ^current tps: $1={#if (\@1=-$1, !@oldtp) #(@oldtp=@tp=\@1); #print ("Travel points: "+%(@tp-\@1)+" from last score, "+%(@oldtp-\@1)+" from start of session, "+\$1+" total"); #(@tp=\@1)}
+#action >+exp ^current xp: $1={#if (\@1=-$1, !@oldxp) #(@oldxp=@xp=\@1); #print ("Exp: "+%(@xp-\@1)+" from last score, "+%(@oldxp-\@1)+" from start of session, "+\$1+" total"); #(@xp=\@1)}
+
+#("     KEEP COUNT OF GAME TIME       ")
+#exe <include/timekeeper
+
+#("    INCLUDE STANDARD ALIASES   ")
+#exe <include/aliases
+#exe <include/dooraliases
+#exe <include/herbs
+#exe <include/highlights

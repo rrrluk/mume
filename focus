@@ -1,0 +1,22 @@
+#alias focus2ferry=#speedwalk ddwdnnnnneeeennnneedeesdn
+#alias ferry2focus=#speedwalk sunwwuwwsssswwwwsssssueuu
+#alias focus=cast 'create focus' $0
+
+#action >+shipwest ^The white ship docks at the pier and a gangway is lowered.={#print;stand;west;#(@shipwest = 1)}
+#action >+to_avallone ^The ship is now docked at a pier in Avallone.={#print;stand;north;#(@to_avallone = 1)}
+#action >+focus_done ^You extract the matter from the Ainulindale and create your focus...={#print;sleep;#in walk_to_ferry (40000) {wake;stand;focus2ferry};#(@focus_done = 1)}
+#action >+ferry_back ^The ferry has arrived at the quay and you can now board.={#print;\
+		#if (@focus_done > 0) {\
+			#if (@ferry_back != 1)\
+				{stand;board};\
+			#else \
+				{stand;south};\
+			#(@ferry_back = 1)\
+		}\
+	}
+#action >+to_ship_back ^The white ship docks at one of the piers.={#print;\
+		#if (@focus_done > 0) {\
+				{stand;south}\
+		}\
+	}
+#action >+to_mortal ^Ropes are thrown and the ship comes to a halt={#print;#if (@focus_done > 0) {stand;east;east} }

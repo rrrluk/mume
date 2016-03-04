@@ -1,0 +1,126 @@
+#("      EFFORT     ")
+#($effort="n")
+#alias cc={#($effort = "c");#print (attr "green"+"*** Spell speed set to [ "+noattr+attr "bold yellow"+"carefully"+noattr+attr "green"+" ] ***"+noattr)}
+#alias cf={#($effort = "f");#print (attr "green"+"*** Spell speed set to [ "+noattr+attr "bold yellow"+"fast"+noattr+attr "green"+" ] ***"+noattr)}
+#alias cn={#($effort = "n");#print (attr "green"+"*** Spell speed set to [ "+noattr+attr "bold yellow"+"normally"+noattr+attr "green"+" ] ***"+noattr)}
+#alias cq={#($effort = "q");#print (attr "green"+"*** Spell speed set to [ "+noattr+attr "bold yellow"+"quickly"+noattr+attr "green"+" ] ***"+noattr)}
+#alias ct={#($effort = "t");#print (attr "green"+"*** Spell speed set to [ "+noattr+attr "bold yellow"+"thoroughly"+noattr+attr "green"+" ] ***"+noattr)}
+
+#("    PORT KEYS AND SHIT   ")
+#($loc1 = "[NONE]");#($key1 = "")
+#($loc2 = "[NONE]");#($key2 = "")
+#($loc3 = "[NONE]");#($key3 = "")
+#($loc4 = "[NONE]");#($key4 = "")
+#($loc5 = "[NONE]");#($key5 = "")
+#($loc6 = "[NONE]");#($key6 = "")
+#($loc7 = "[NONE]");#($key7 = "")
+#($loc8 = "[NONE]");#($key8 = "")
+#($loc9 = "[NONE]");#($key9 = "")
+
+#alias keys={#print (attr "bold blue" + "Room Keys" + noattr);prkey 1 ${loc1} (${key1});prkey 2 ${loc2} (${key2});prkey 3 ${loc3} (${key3});prkey 4 ${loc4} (${key4});prkey 5 ${loc5} (${key5});prkey 6 ${loc6} (${key6});prkey 7 ${loc7} (${key7});prkey 8 ${loc8} (${key8});prkey 9 ${loc9} (${key9})}
+#alias rk=keys
+#alias prkey=#print (attr "bold red" + "$1: " + attr "bold green" + "$2" + noattr)
+#alias sk1={#($loc1 = "$1");#($key1 = "$2")}
+#alias sk2={#($loc2 = "$1");#($key2 = "$2")}
+#alias sk3={#($loc3 = "$1");#($key3 = "$2")}
+#alias sk4={#($loc4 = "$1");#($key4 = "$2")}
+#alias sk5={#($loc5 = "$1");#($key5 = "$2")}
+#alias sk6={#($loc6 = "$1");#($key6 = "$2")}
+#alias sk7={#($loc7 = "$1");#($key7 = "$2")}
+#alias sk8={#($loc8 = "$1");#($key8 = "$2")}
+#alias sk9={#($loc9 = "$1");#($key9 = "$2")}
+#alias sr1=cast 'scry' ${key1}
+#alias sr2=cast 'scry' ${key2}
+#alias sr3=cast 'scry' ${key3}
+#alias sr4=cast 'scry' ${key4}
+#alias sr5=cast 'scry' ${key5}
+#alias sr6=cast 'scry' ${key6}
+#alias sr7=cast 'scry' ${key7}
+#alias sr8=cast 'scry' ${key8}
+#alias sr9=cast 'scry' ${key9}
+#alias pp1=#if (*$(1)) cast 'portal' $1 ${key1}; #else cast 'portal' up ${key1}
+#alias pp2=#if (*$(1)) cast 'portal' $1 ${key2}; #else cast 'portal' up ${key2}
+#alias pp3=#if (*$(1)) cast 'portal' $1 ${key3}; #else cast 'portal' up ${key3}
+#alias pp4=#if (*$(1)) cast 'portal' $1 ${key4}; #else cast 'portal' up ${key4}
+#alias pp5=#if (*$(1)) cast 'portal' $1 ${key5}; #else cast 'portal' up ${key5}
+#alias pp6=#if (*$(1)) cast 'portal' $1 ${key6}; #else cast 'portal' up ${key6}
+#alias pp7=#if (*$(1)) cast 'portal' $1 ${key7}; #else cast 'portal' up ${key7}
+#alias pp8=#if (*$(1)) cast 'portal' $1 ${key8}; #else cast 'portal' up ${key8}
+#alias pp9=#if (*$(1)) cast 'portal' $1 ${key9}; #else cast 'portal' up ${key9}
+#alias tp1=cast 'teleport' ${key1}
+#alias tp2=cast 'teleport' ${key2}
+#alias tp3=cast 'teleport' ${key3}
+#alias tp4=cast 'teleport' ${key4}
+#alias tp5=cast 'teleport' ${key5}
+#alias tp6=cast 'teleport' ${key6}
+#alias tp7=cast 'teleport' ${key7}
+#alias tp8=cast 'teleport' ${key8}
+#alias tp9=cast 'teleport' ${key9}
+#alias wr1=cast 'watch room' ${key1} ${loc1}
+#alias wr2=cast 'watch room' ${key2} ${loc2}
+#alias wr3=cast 'watch room' ${key3} ${loc3}
+#alias wr4=cast 'watch room' ${key4} ${loc4}
+#alias wr5=cast 'watch room' ${key5} ${loc5}
+#alias wr6=cast 'watch room' ${key6} ${loc6}
+#alias wr7=cast 'watch room' ${key7} ${loc7}
+#alias wr8=cast 'watch room' ${key8} ${loc8}
+#alias wr9=cast 'watch room' ${key9} ${loc9}
+
+#("    ALIASES       ")
+#alias ar=cast normal 'armour'
+#alias brx=#if (*$(1)) cast 'break door' $0; #else cast 'break door' ${door}
+#alias blx=#if (*$(1)) cast 'block door' $0; #else cast 'block door' ${door}
+#alias bx=blx exit $1
+#alias br=brx $0
+#alias xx=blx
+#alias xz=#if (*$(1)) cast q 'block door' exit $0;#else cast q 'block door' ${door}
+#alias chant=cast 'enchant' $0
+#alias dm=cast 'detect magic'
+#alias dim=cast 'dispel magic' $0
+#alias id=cast 'identify' $0
+#alias inv=cast 'shroud' $0
+#alias ll=cast 'locate life' $0
+#alias loc=#if (*$(1)) {cast 'locate' $0;#($locate = \$0)}; #else cast 'locate' ${locate}
+#alias nv=cast 'night vision'
+#alias shi=cast normal 'shield'
+#alias tele=cast 'teleport' $0
+
+#alias bless=cast normal 'bless' $0
+#alias bob=cast normal 'breath of briskness'
+#alias cf=cast 'create food'
+#alias cw=cast 'create water' $0
+#alias cl=cast 'cure light' $0
+#alias cr=cast 'cure critic' $0
+#alias cs=cast 'cure serious' $0
+#alias cb=cast 'cure blind' $0
+#alias rp=cast 'remove poison' $0
+#alias sense=cast 'sense life'
+#alias cast=cast normal 'strength' $0
+#alias crl=#if (*$(1)) cast 'create light' $1; #else cast 'create light' ${light}
+#alias heal=cast 'heal' $0
+#alias sanc=cast 'sanctuary' $0
+#alias pfe=cast 'protection from evil'
+#alias de=cast 'detect evil'
+#alias dark=cast 'darkness'
+
+#alias sto=cast 'store' $0
+#alias stb=sto fireball
+#alias sty=sto colour spray
+#alias stq=sto earthquake
+#alias stsi=sto silence
+#alias stbo=sto lightning bolt
+#alias sts=sto sleep
+
+#alias qu=cast 'earthquake'
+
+#alias crl=#if (*$(1)) cast 'create light' $0; #else cast 'create light' ${light}
+#alias bl=#if (%%$(1)==$(1)) cast ${effort} 'blind' $1.${target};#else #if (*$(1)) cast ${effort} 'blind' $0; #else cast ${effort} 'blind' ${target}
+#alias ch=#if (%%$(1)==$(1)) cast ${effort} 'charm' $1.${target};#else #if (*$(1)) cast ${effort} 'charm' $0; #else cast ${effort} 'charm' ${target}
+#alias z=#if (%%$(1)==$(1)) cast ${effort} 'sleep' $1.${target};#else #if (*$(1)) cast ${effort} 'sleep' $0; #else cast ${effort} 'sleep' ${target}
+#alias zz=z $0
+#alias eye=#if (%%$(1)==$(1)) use eye $1.${target};#else #if (*$(1)) use eye $0; #else use eye ${target}
+#alias rai=#if (%%$(1)==$(1)) cast 'raise dead' $1.corpse;#else #if (*$(1)) cast 'raise dead' $0-corpse; #else cast 'raise dead' corpse
+
+#alias blo=bl *orc*
+#alias blm=bl *man*
+#alias blt=bl *troll*

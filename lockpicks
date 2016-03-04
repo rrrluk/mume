@@ -1,0 +1,18 @@
+#action >+LockPicks1 A couple of lockpicks have a small bump near the tip.=#print ("$0 ("+attr "bold cyan"+"master assassin"+noattr+")")
+
+#action >+LockPicks2 Two of the lockpicks have shallow notches on them.=#print ("$0 ("+attr "bold cyan"+"assassin pracmaster"+noattr+")")
+
+#action >+LockPicks3 The lockpicks are extremely well tempered.=#print ("$0 ("+attr "bold cyan"+"blue mountains"+noattr+")")
+
+#action >+LockPicks4 Several of the picks have long, smooth grooves along their length.=#print ("$0 ("+attr "bold cyan"+"cut-throat"+noattr+")")
+
+#action >+LockPicks5 There is a strange lockpick, with a sharp protrusion on one side, in the set.=#print ("$0 ("+attr "bold cyan"+"kraksh"+noattr+")")
+
+#action >+LockPicks6 The lockpicks feel oddly light in your hand.=#print ("$0 ("+attr "bold cyan"+"grey-cloaked man"+noattr+")")
+
+#action >+LockPicks7 The edges of most picks have been carefully sharpened.=#print ("$0 ("+attr "bold cyan"+"angdil"+noattr+")")
+
+#action >+LockPicks8 A finely shaped lockpick has been engraved with a white hand.=#print ("$0 ("+attr "bold cyan"+"saruman"+noattr+")")
+
+#alias picks={#emu A couple of lockpicks have a small bump near the tip.;#emu Two of the lockpicks have shallow notches on them.;#emu The lockpicks are extremely well tempered.;#emu Several of the picks have long, smooth grooves along their length.;#emu There is a strange lockpick, with a sharp protrusion on one side, in the set.;#emu The lockpicks feel oddly light in your hand.;#emu The edges of most picks have been carefully sharpened.;#emu A finely shaped lockpick has been engraved with a white hand.;#send ("")}
+
